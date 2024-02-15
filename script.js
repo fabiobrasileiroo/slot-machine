@@ -52,34 +52,34 @@ window.raf = (function(){
     this.wins = 0;
     this.losses = 0;
   }
-  // SlotMachine.prototype.beforeRun = function(){    
-  //   if (completed) {
-  //     this.showWin(false);
-  //     completed = false;
-  //     var result = null;
-  //     result = this.options.names[random(this.options.rowNum*100/this.options.winRate)|0];//set winrate
-  //     for(var i=0;i<this.options.colNum;i++){
-  //       this.colArr[i].beforeRun(result);
-  //     }      
-  //     this.rotateHandle();
-  //     this.run();
-  //   }    
-  //   if (this.options.autoPlay) nextLoop = setTimeout(function(){this.beforeRun()}.bind(this),this.options.autoPlayTime*1000);
-  // }
   SlotMachine.prototype.beforeRun = function(){    
-  if (completed) {
-    this.showWin(false);
-    completed = false;
-    var result = null;
-    result = this.options.names[random(this.options.rowNum*100/this.options.winRate)|0];//set winrate
-    for(var i=0;i<this.options.colNum;i++){
-      this.colArr[i].beforeRun(result);
-    }      
-    this.rotateHandle();
-    this.run();
-  }    
-  if (this.options.autoPlay) nextLoop = setTimeout(function(){this.beforeRun()}.bind(this),this.options.autoPlayTime*1000);
-}
+    if (completed) {
+      this.showWin(false);
+      completed = false;
+      var result = null;
+      result = this.options.names[random(this.options.rowNum*100/this.options.winRate)|0];//set winrate
+      for(var i=0;i<this.options.colNum;i++){
+        this.colArr[i].beforeRun(result);
+      }      
+      this.rotateHandle();
+      this.run();
+    }    
+    if (this.options.autoPlay) nextLoop = setTimeout(function(){this.beforeRun()}.bind(this),this.options.autoPlayTime*1000);
+  }
+//   SlotMachine.prototype.beforeRun = function(){    
+//   if (completed) {
+//     this.showWin(false);
+//     completed = false;
+//     var result = null;
+//     result = this.options.names[random(this.options.rowNum*100/this.options.winRate)|0];//set winrate
+//     for(var i=0;i<this.options.colNum;i++){
+//       this.colArr[i].beforeRun(result);
+//     }      
+//     this.rotateHandle();
+//     this.run();
+//   }    
+//   if (this.options.autoPlay) nextLoop = setTimeout(function(){this.beforeRun()}.bind(this),this.options.autoPlayTime*1000);
+// }
   SlotMachine.prototype.afterRun = function(){
     completed = true;
     var results = [],win=true;
