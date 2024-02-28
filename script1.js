@@ -301,7 +301,7 @@ window.raf = (function () {
     if (next == -1) next = random(0, this.arr.length - 1) | 0;
     var s =
       this.top +
-      (random(2, 50) | 0) * this.colHeight +
+      (random(2, 55) | 0) * this.colHeight +
       (((next + 0.5) * this.rowHeight) | 0) -
       this.halfHeight;
     var n = (random(2, 25) | 0) * fps;
