@@ -13,11 +13,11 @@ window.raf = (function () {
 (function () {
   var NAME = "SlotMachine",
     defaultSettings = {
-      width: "600",
-      height: "600",
+      width: "300",
+      height: "300",
       colNum: 3,
       rowNum: 9,
-      winRate: 49,
+      winRate: 100,
       autoPlay: false,
       autoSize: false,
       autoPlayTime: 10,
@@ -27,7 +27,7 @@ window.raf = (function () {
       handleHeight: 30,
       machineBorder: 15,
       // machineColor    : 'rgba(120,60,30,1)',
-      machineColor: "rgba(51,202,0,1)",
+      machineColor: "rgba(255,255,255,1)",
       names: [
         "seven",
         "lemon",
@@ -235,7 +235,7 @@ window.raf = (function () {
       // BannerFlow event
       BannerFlow.addEventListener(BannerFlow.RESIZE, function () {
         //clearTimeout(timer);
-        //timer = setTimeout(function(){that.init(BannerFlow);that.beforeRun()},500);
+        // timer = setTimeout(function(){that.init(BannerFlow);that.beforeRun()},500);
       });
       BannerFlow.addEventListener(BannerFlow.CLICK, function () {
         that.beforeRun();
@@ -304,7 +304,7 @@ window.raf = (function () {
       (random(2, 10) | 0) * this.colHeight +
       (((next + 0.5) * this.rowHeight) | 0) -
       this.halfHeight;
-    var n = (random(2, 6) | 0) * fps;
+    var n = (random(10, 30) | 0) * fps ;
     this.speed = (2 * s) / (n + 1);
     this.acceleration = this.speed / n;
   };
