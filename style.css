@@ -33,6 +33,7 @@
   float: left;
   background-clip: content-box;
 }
+
 .container:before {
   content: "";
   position: absolute;

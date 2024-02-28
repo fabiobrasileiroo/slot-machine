@@ -304,7 +304,7 @@ window.raf = (function () {
       (random(2, 10) | 0) * this.colHeight +
       (((next + 0.5) * this.rowHeight) | 0) -
       this.halfHeight;
-    var n = (random(10, 30) | 0) * fps ;
+    var n = (random(2, 20) | 0) * fps;
     this.speed = (2 * s) / (n + 1);
     this.acceleration = this.speed / n;
   };
