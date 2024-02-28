@@ -197,8 +197,8 @@ window.raf = (function () {
     // Função para atualizar as configurações do slot machine com base na largura da janela
     var updateSlotMachineSize = function () {
       if (window.innerWidth >= 1440) {
-        this.options.width = "900";
-        this.options.height = "900";
+        this.options.width = "650";
+        this.options.height = "650";
       } else if (window.innerWidth >= 1024) {
         this.options.width = "600";
         this.options.height = "600";
@@ -210,21 +210,26 @@ window.raf = (function () {
         this.options.height = "300";
       } else if (window.innerWidth >= 320) {
         this.options.width = "250";
-        this.options.height ="250";
+        this.options.height = "250";
+      } else if (window.innerWidth < 320) {
+        this.options.width = "200";
+        this.options.height = "200";
       }
     };
 
-    // Chamada inicial para definir o tamanho do slot machine
     updateSlotMachineSize.call(this);
 
-    // // Ouvinte de evento de redimensionamento da janela
+    // Ouvinte de evento de redimensionamento da janela
+    // var resizeTimer;
     // window.addEventListener("resize", function() {
-    //     // Atualize as configurações do slot machine quando a janela for redimensionada
-    //     updateSlotMachineSize.call(this);
-    //     // Reinicialize o slot machine para aplicar as novas configurações
-    //     this.init();
+    //     clearTimeout(resizeTimer);
+    //     resizeTimer = setTimeout(function() {
+    //         // Atualize as configurações do slot machine quando a janela for redimensionada
+    //         updateSlotMachineSize.call(this);
+    //         // Reinicialize o slot machine para aplicar as novas configurações
+    //         this.init();
+    //     }.bind(this), 250); // Tempo de espera mínimo antes de reinicializar
     // }.bind(this));
-
     //apply settings
     if (this.options.customImage) {
       var urls = BannerFlow.text.strip().split(",");
