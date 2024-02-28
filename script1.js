@@ -13,8 +13,8 @@ window.raf = (function () {
 (function () {
   var NAME = "SlotMachine",
     defaultSettings = {
-      width: "300",
-      height: "300",
+      width: "600",
+      height: "600",
       colNum: 3,
       rowNum: 9,
       winRate: 20,
@@ -174,6 +174,27 @@ window.raf = (function () {
         : defaultSettings.autoPlayTime;
       this.options.customImage = settings.customImage;
     }
+       // Check if window width is 1440px
+    if (window.innerWidth === 1440) {
+      this.options.width = "900";
+      this.options.height = "900";
+    }else if (window.innerWidth === 1024) {
+      this.options.width = "600";
+      this.options.height = "600";
+    } else if (window.innerWidth === 768) {
+      this.options.width = "500";
+      this.options.height = "500";
+    }else if (window.innerWidth === 425) {
+      this.options.width = "300";
+      this.options.height = "300";
+    } else if (window.innerWidth === 320) {
+      this.options.width = "250";
+      this.options.height = "250";
+    }
+
+
+
+
     //apply settings
     if (this.options.customImage) {
       var urls = BannerFlow.text.strip().split(",");
