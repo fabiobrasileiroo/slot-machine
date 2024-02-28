@@ -13,8 +13,8 @@ window.raf = (function () {
 (function () {
   var NAME = "SlotMachine",
     defaultSettings = {
-      width: "600",
-      height: "600",
+      width: "200",
+      height: "200",
       colNum: 3,
       rowNum: 9,
       winRate: 20,
@@ -174,26 +174,56 @@ window.raf = (function () {
         : defaultSettings.autoPlayTime;
       this.options.customImage = settings.customImage;
     }
-       // Check if window width is 1440px
-    if (window.innerWidth === 1440) {
-      this.options.width = "900";
-      this.options.height = "900";
-    }else if (window.innerWidth === 1024) {
-      this.options.width = "600";
-      this.options.height = "600";
-    } else if (window.innerWidth === 768) {
-      this.options.width = "500";
-      this.options.height = "500";
-    }else if (window.innerWidth === 425) {
-      this.options.width = "300";
-      this.options.height = "300";
-    } else if (window.innerWidth === 320) {
-      this.options.width = "250";
-      this.options.height = "250";
-    }
+    // Check if window width is 1440px
+    // if (window.innerWidth === 1440) {
+    //   this.options.width = "900";
+    //   this.options.height = "900";
+    // }else if (window.innerWidth === 1024) {
+    //   this.options.width = "600";
+    //   this.options.height = "600";
+    // } else if (window.innerWidth === 768) {
+    //   this.options.width = "500";
+    //   this.options.height = "500";
+    // }else if (window.innerWidth === 425) {
+    //   this.options.width = "300";
+    //   this.options.height = "300";
+    // } else if (window.innerWidth === 320) {
+    //   this.options.width = "250";
+    //   this.options.height = "250";
+    // }
 
+    // Adicione este código no início da função init do SlotMachine.prototype.init
 
+    // Função para atualizar as configurações do slot machine com base na largura da janela
+    var updateSlotMachineSize = function () {
+      if (window.innerWidth >= 1440) {
+        this.options.width = "900";
+        this.options.height = "900";
+      } else if (window.innerWidth >= 1024) {
+        this.options.width = "600";
+        this.options.height = "600";
+      } else if (window.innerWidth >= 768) {
+        this.options.width = "500";
+        this.options.height = "500";
+      } else if (window.innerWidth >= 425) {
+        this.options.width = "300";
+        this.options.height = "300";
+      } else if (window.innerWidth >= 320) {
+        this.options.width = "250";
+        this.options.height ="250";
+      }
+    };
 
+    // Chamada inicial para definir o tamanho do slot machine
+    updateSlotMachineSize.call(this);
+
+    // // Ouvinte de evento de redimensionamento da janela
+    // window.addEventListener("resize", function() {
+    //     // Atualize as configurações do slot machine quando a janela for redimensionada
+    //     updateSlotMachineSize.call(this);
+    //     // Reinicialize o slot machine para aplicar as novas configurações
+    //     this.init();
+    // }.bind(this));
 
     //apply settings
     if (this.options.customImage) {
