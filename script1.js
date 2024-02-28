@@ -17,7 +17,7 @@ window.raf = (function () {
       height: "300",
       colNum: 3,
       rowNum: 9,
-      winRate: 100,
+      winRate: 20,
       autoPlay: false,
       autoSize: false,
       autoPlayTime: 10,
@@ -301,10 +301,10 @@ window.raf = (function () {
     if (next == -1) next = random(0, this.arr.length - 1) | 0;
     var s =
       this.top +
-      (random(2, 10) | 0) * this.colHeight +
+      (random(2, 50) | 0) * this.colHeight +
       (((next + 0.5) * this.rowHeight) | 0) -
       this.halfHeight;
-    var n = (random(2, 20) | 0) * fps;
+    var n = (random(2, 25) | 0) * fps;
     this.speed = (2 * s) / (n + 1);
     this.acceleration = this.speed / n;
   };
