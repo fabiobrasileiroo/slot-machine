@@ -17,7 +17,7 @@ window.raf = (function () {
       height: "200",
       colNum: 3,
       rowNum: 9,
-      winRate: 50,
+      winRate: 100,
       autoPlay: false,
       autoSize: false,
       autoPlayTime: 10,
@@ -68,6 +68,29 @@ window.raf = (function () {
           random((this.options.rowNum * 100) / this.options.winRate) | 0
         ]; //set winrate
       console.log(result);
+      var backDiv = document.querySelector(".back");
+      // Altere o conteúdo da div para o valor desejado
+      if(result === defaultSettings.names[0]) {
+        backDiv.textContent = 'Premio: 0,01'
+      } else if(result === defaultSettings.names[1]) {
+        backDiv.textContent = "Premio: 1,00"; //
+      }else if(result === defaultSettings.names[2]) {
+        backDiv.textContent = "Premio: Duas rodadas"; //
+      }else if(result === defaultSettings.names[3]) {
+        backDiv.textContent = "Premio: 10,00"; //
+      }else if(result === defaultSettings.names[4]) {
+        backDiv.textContent = "Premio: Um monte de nada"; //
+      }else if(result === defaultSettings.names[5]) {
+        backDiv.textContent = "Premio: Comida trocadoFood"; //
+      }else if(result === defaultSettings.names[6]) {
+        backDiv.textContent = "Premio: Não foi dessa vez 🃏"; //
+      }else if(result === defaultSettings.names[7]) {
+        backDiv.textContent = "Premio: Mais uma rodada"; //
+      }
+      else if(result === defaultSettings.names[8]) {
+        backDiv.textContent = "Novo Valor"; //
+      }
+
       for (var i = 0; i < this.options.colNum; i++) {
         this.colArr[i].beforeRun(result);
       }
