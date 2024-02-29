@@ -219,18 +219,24 @@ window.raf = (function () {
 
     updateSlotMachineSize.call(this);
 
-    // Ouvinte de evento de redimensionamento da janela
+    // // Ouvinte de evento de redimensionamento da janela
     // var resizeTimer;
-    // window.addEventListener("resize", function() {
+    // window.addEventListener(
+    //   "resize",
+    //   function () {
     //     clearTimeout(resizeTimer);
-    //     resizeTimer = setTimeout(function() {
+    //     resizeTimer = setTimeout(
+    //       function () {
     //         // Atualize as configurações do slot machine quando a janela for redimensionada
     //         updateSlotMachineSize.call(this);
     //         // Reinicialize o slot machine para aplicar as novas configurações
     //         this.init();
-    //     }.bind(this), 250); // Tempo de espera mínimo antes de reinicializar
-    // }.bind(this));
-    //apply settings
+    //       }.bind(this),
+    //       250
+    //     ); // Tempo de espera mínimo antes de reinicializar
+    //   }.bind(this)
+    // );
+    // apply settings
     if (this.options.customImage) {
       var urls = BannerFlow.text.strip().split(",");
       this.options.names = [];
