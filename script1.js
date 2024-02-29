@@ -17,7 +17,7 @@ window.raf = (function () {
       height: "200",
       colNum: 3,
       rowNum: 9,
-      winRate: 20,
+      winRate: 100,
       autoPlay: false,
       autoSize: false,
       autoPlayTime: 10,
@@ -66,6 +66,7 @@ window.raf = (function () {
         this.options.names[
           random((this.options.rowNum * 100) / this.options.winRate) | 0
         ]; //set winrate
+        console.log(result)
       for (var i = 0; i < this.options.colNum; i++) {
         this.colArr[i].beforeRun(result);
       }
