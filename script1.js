@@ -284,10 +284,20 @@ window.raf = (function () {
       } else if (window.innerWidth >= 1024) {
         this.options.width = "550";
         this.options.height = "400";
-      } else if (window.innerWidth >= 768) {
+      }
+      else if(window.innerHeight <=768 && window.innerWidth >= 768) {
+        this.options.widget = "500"
+        this.options.height = "300"
+      }
+      else if (window.innerWidth >= 768) {
         this.options.width = "500";
         this.options.height = "500";
-      } else if (window.innerWidth >= 425) {
+      } 
+      else if(window.innerHeight >=425 && window.innerWidth >= 425) {
+        this.options.widget = "450"
+        this.options.height = "300"
+      }
+      else if (window.innerWidth >= 425) {
         this.options.width = "450";
         this.options.height = "450";
       } else if (window.innerWidth >= 320) {
