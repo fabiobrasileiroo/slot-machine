@@ -57,6 +57,7 @@ window.raf = (function () {
     this.options = {};
   };
   SlotMachine.prototype.beforeRun = function () {
+    document.getElementById("background-music").play();
     if (completed) {
       this.showWin(false);
       completed = false;
@@ -80,6 +81,9 @@ window.raf = (function () {
       );
   };
   SlotMachine.prototype.afterRun = function () {
+    document.getElementById('background-music').pause();
+
+     document.getElementById("background-music-winner").play();
     completed = true;
     var results = [],
       win = true;
