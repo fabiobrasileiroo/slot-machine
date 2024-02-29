@@ -1,3 +1,6 @@
+.machine {
+  margin-top: 1.2rem !important;
+}
 .container {
   margin-top: 100px !important;
 }
@@ -71,6 +74,12 @@
     width: 31.25rem !important; (500px / 16px)
     height: 31.25rem !important; (500px / 16px)
   } */
+  .container{
+    margin-top: 100px !important;
+  }
+  .machine {
+    margin-top: 100px !important;
+  }
   h2 {
     font-size: 4.6875rem !important; /* (75px / 16px) */
   }
@@ -82,7 +91,7 @@
     height: 18.75rem !important; (300px / 16px)
   } */
   .frame-5 {
-    line-height: 4rem !important;
+    line-height: 3rem !important;
   }
   h2 {
     font-size: 3.05rem !important; /* (60px / 16px) */

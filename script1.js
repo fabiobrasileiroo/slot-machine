@@ -81,7 +81,7 @@ window.raf = (function () {
       );
   };
   SlotMachine.prototype.afterRun = function () {
-    document.getElementById('background-music').pause();
+    document.getElementById("background-music").pause();
     completed = true;
     var results = [],
       win = true;
@@ -89,12 +89,12 @@ window.raf = (function () {
       results.push(this.colArr[i].getResult());
       if (i > 0 && results[i] != results[i - 1]) {
         win = false;
-      document.getElementById("background-music-faild").play();
+        document.getElementById("background-music-faild").play();
         break;
       }
     }
     if (win) {
-       document.getElementById("background-music-winner").play();
+      document.getElementById("background-music-winner").play();
       this.showWin(true);
       setTimeout(
         function () {
@@ -201,20 +201,20 @@ window.raf = (function () {
     // Função para atualizar as configurações do slot machine com base na largura da janela
     var updateSlotMachineSize = function () {
       if (window.innerWidth >= 1440) {
-        this.options.width = "600";
-        this.options.height = "600";
+        this.options.width = "550";
+        this.options.height = "550";
       } else if (window.innerWidth >= 1024) {
-        this.options.width = "600";
-        this.options.height = "600";
+        this.options.width = "550";
+        this.options.height = "400";
       } else if (window.innerWidth >= 768) {
         this.options.width = "500";
         this.options.height = "500";
       } else if (window.innerWidth >= 425) {
-        this.options.width = "300";
-        this.options.height = "300";
+        this.options.width = "450";
+        this.options.height = "450";
       } else if (window.innerWidth >= 320) {
-        this.options.width = "250";
-        this.options.height = "250";
+        this.options.width = "300";
+        this.options.height = "350";
       } else if (window.innerWidth < 320) {
         this.options.width = "200";
         this.options.height = "200";
