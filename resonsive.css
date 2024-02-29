@@ -1,5 +1,5 @@
 .container {
-  margin-top: 100px;
+  margin-top: 100px !important;
 }
 .handle {
   margin-top: 220px !important;
@@ -81,6 +81,9 @@
     width: 18.75rem !important; (300px / 16px)
     height: 18.75rem !important; (300px / 16px)
   } */
+  .frame-5 {
+    line-height: 4rem !important;
+  }
   h2 {
     font-size: 3.05rem !important; /* (60px / 16px) */
   }
@@ -91,10 +94,15 @@
     width: 15.625rem !important; (250px / 16px)
     height: 15.625rem !important; (250px / 16px)
   } */
-  h2 {
-    font-size: 2.0rem !important; /* (40px / 16px) */
+  .frame-5 {
+    line-height: 3rem !important;
   }
-  .machine {margin-top: 85px !important;}
+  h2 {
+    font-size: 2rem !important; /* (40px / 16px) */
+  }
+  .machine {
+    margin-top: 85px !important;
+  }
 }
 
 @media screen and (max-width: 319px) {
