@@ -278,7 +278,10 @@ window.raf = (function () {
 
     // Função para atualizar as configurações do slot machine com base na largura da janela
     var updateSlotMachineSize = function () {
-      if (window.innerWidth >= 1440) {
+      if (window.innerHeight <=1440 && window.innerWidth >= 1440) {
+        this.options.width = "550";
+        this.options.height = "300";
+      }else      if (window.innerWidth >= 1440) {
         this.options.width = "550";
         this.options.height = "550";
       } else if(window.innerHeight <=1024 && window.innerWidth >= 1024) {
