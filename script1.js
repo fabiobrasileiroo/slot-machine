@@ -17,7 +17,7 @@ window.raf = (function () {
       height: "200",
       colNum: 3,
       rowNum: 9,
-      winRate: 100,
+      winRate: 50,
       autoPlay: false,
       autoSize: false,
       autoPlayTime: 10,
@@ -58,6 +58,7 @@ window.raf = (function () {
   };
   SlotMachine.prototype.beforeRun = function () {
     document.getElementById("background-music").play();
+
     if (completed) {
       this.showWin(false);
       completed = false;
@@ -66,7 +67,7 @@ window.raf = (function () {
         this.options.names[
           random((this.options.rowNum * 100) / this.options.winRate) | 0
         ]; //set winrate
-        console.log(result)
+      console.log(result);
       for (var i = 0; i < this.options.colNum; i++) {
         this.colArr[i].beforeRun(result);
       }
@@ -106,34 +107,47 @@ window.raf = (function () {
   //   }
   // };
   SlotMachine.prototype.afterRun = function () {
+    window.addEventListener("click", function () {
+      if (!completed) {
+        var containers = document.querySelectorAll(".container1");
+        containers.forEach(function (container) {
+          var card = container.querySelector(".card");
+          card.classList.remove("flipped");
+          card.classList.add("flipped1");
+        });
+      }
+    });
+
     document.getElementById("background-music").pause();
     completed = true;
     var results = [],
       win = true;
-    
-// Obtenha todas as divs com a classe 'container1'
-var containers = document.querySelectorAll('.container1');
-
-// Para cada div container
-containers.forEach(function(container) {
-  // Encontre a div com a classe 'card' dentro desta div container
-  var card = container.querySelector('.card');
-
-  // Se winner for verdadeiro, vire a carta
-  if (win) {
-    card.classList.add('flipped');
-  }
-});
 
     for (var i = 0; i < this.options.colNum; i++) {
       results.push(this.colArr[i].getResult());
       if (i > 0 && results[i] != results[i - 1]) {
         win = false;
+
         document.getElementById("background-music-faild").play();
         break;
       }
     }
     if (win) {
+      // Obtenha todas as divs com a classe 'container1'
+      var containers = document.querySelectorAll(".container1");
+
+      // Para cada div container
+      containers.forEach(function (container) {
+        // Encontre a div com a classe 'card' dentro desta div container
+        var card = container.querySelector(".card");
+
+        // Se winner for verdadeiro, vire a carta
+        if (win) {
+          card.classList.remove("flipped1");
+          card.classList.add("flipped");
+        }
+      });
+
       document.getElementById("background-music-winner").play();
       this.showWin(true);
       setTimeout(
@@ -143,7 +157,7 @@ containers.forEach(function(container) {
         this.options.autoPlayTime * 1000
       );
     }
-};
+  };
 
   SlotMachine.prototype.rotateHandle = function () {
     var handle = document.querySelector(".handle");
