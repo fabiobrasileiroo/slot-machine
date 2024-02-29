@@ -82,8 +82,6 @@ window.raf = (function () {
   };
   SlotMachine.prototype.afterRun = function () {
     document.getElementById('background-music').pause();
-
-     document.getElementById("background-music-winner").play();
     completed = true;
     var results = [],
       win = true;
@@ -91,10 +89,12 @@ window.raf = (function () {
       results.push(this.colArr[i].getResult());
       if (i > 0 && results[i] != results[i - 1]) {
         win = false;
+      document.getElementById("background-music-faild").play();
         break;
       }
     }
     if (win) {
+       document.getElementById("background-music-winner").play();
       this.showWin(true);
       setTimeout(
         function () {
@@ -201,8 +201,8 @@ window.raf = (function () {
     // Função para atualizar as configurações do slot machine com base na largura da janela
     var updateSlotMachineSize = function () {
       if (window.innerWidth >= 1440) {
-        this.options.width = "650";
-        this.options.height = "650";
+        this.options.width = "600";
+        this.options.height = "600";
       } else if (window.innerWidth >= 1024) {
         this.options.width = "600";
         this.options.height = "600";
