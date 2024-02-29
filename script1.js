@@ -81,11 +81,50 @@ window.raf = (function () {
         this.options.autoPlayTime * 1000
       );
   };
+  // SlotMachine.prototype.afterRun = function () {
+  //   document.getElementById("background-music").pause();
+  //   completed = true;
+  //   var results = [],
+  //     win = true;
+  //   for (var i = 0; i < this.options.colNum; i++) {
+  //     results.push(this.colArr[i].getResult());
+  //     if (i > 0 && results[i] != results[i - 1]) {
+  //       win = false;
+  //       document.getElementById("background-music-faild").play();
+  //       break;
+  //     }
+  //   }
+  //   if (win) {
+  //     document.getElementById("background-music-winner").play();
+  //     this.showWin(true);
+  //     setTimeout(
+  //       function () {
+  //         this.showWin(false);
+  //       }.bind(this),
+  //       this.options.autoPlayTime * 1000
+  //     );
+  //   }
+  // };
   SlotMachine.prototype.afterRun = function () {
     document.getElementById("background-music").pause();
     completed = true;
     var results = [],
       win = true;
+    
+// Obtenha todas as divs com a classe 'container1'
+var containers = document.querySelectorAll('.container1');
+
+// Para cada div container
+containers.forEach(function(container) {
+  // Encontre a div com a classe 'card' dentro desta div container
+  var card = container.querySelector('.card');
+
+  // Se winner for verdadeiro, vire a carta
+  if (win) {
+    card.classList.add('flipped');
+  }
+});
+
     for (var i = 0; i < this.options.colNum; i++) {
       results.push(this.colArr[i].getResult());
       if (i > 0 && results[i] != results[i - 1]) {
@@ -104,7 +143,8 @@ window.raf = (function () {
         this.options.autoPlayTime * 1000
       );
     }
-  };
+};
+
   SlotMachine.prototype.rotateHandle = function () {
     var handle = document.querySelector(".handle");
     if (handle) {

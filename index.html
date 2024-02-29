@@ -11,54 +11,98 @@
 </head>
 
 <body>
-  <div class="sp-container" >
+  <div class="sp-container">
     <div class="sp-content">
       <div class="sp-globe"></div>
-		<h2 class="frame-1">Trocados e Canvi</h2>
-		<h2 class="frame-2">Agora apresentar</h2>
-    <!- Agora apresentamos ->
-		<h2 class="frame-3">Ganhe uns troquinhos</h2>
-		<h2 class="frame-4" style="font-size: 90px;" >Teste agora!</h2>
-		<h2 class="frame-5" >
-      <span>Puxe,</span>
-			<span>a alavanca,</span>
-			<span>para experimentar.</span>
-		</h2>
-		<!-- <a class="sp-circle-link" href="https://nick.mkrtchyan.ga" style="margin-bottom: 50vh;">moeda 3d</a> -->
-	</div>
-  <div class="machine" >
-    <!-- style="height: 600px !important;"-->
-    <div class="container" >
-      <div class="winner">
+      <h2 class="frame-1">Trocados e Canvi</h2>
+      <h2 class="frame-2">Agora apresentar</h2>
+      <!- Agora apresentamos ->
+        <h2 class="frame-3">Ganhe uns troquinhos</h2>
+        <h2 class="frame-4" style="font-size: 90px;">Teste agora!</h2>
+        <h2 class="frame-5">
+          <span>Puxe,</span>
+          <span>a alavanca,</span>
+          <span>para experimentar.</span>
+        </h2>
+        <!-- <a class="sp-circle-link" href="https://nick.mkrtchyan.ga" style="margin-bottom: 50vh;">moeda 3d</a> -->
+    </div>
+    <div class="machine">
+      <!-- style="height: 600px !important;"-->
+      <div class="container">
+        <div class="winner">
+        </div>
+      </div>
+      <div class="handle">
       </div>
     </div>
-    <div class="handle">
+    <style scope id="setting"></style>
+    <style scope id="update"></style>
+    <script type="text/javascript" src="script1.js"></script>
+    <style>
+      .container1 {
+        margin-top: 1rem !important;
+        margin: auto;
+        width: 300px;
+        height: 200px;
+        position: relative;
+        perspective: 800px;
+        border-radius: 4px;
+      }
+
+      .card {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transform-style: preserve-3d;
+        transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border-radius: 6px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+      }
+
+      .card div {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 6px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font: 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-smoothing: antialiased;
+        color: #47525D;
+      }
+
+      .back {
+        transform: rotateY(180deg);
+      }
+
+      .card.flipped {
+        transform: rotateY(180deg);
+      }
+    </style>
+    <div class="container1">
+      <div class="card">
+        <div class="front">???</div>
+        <div class="back"  >premio</div>
+      </div>
     </div>
-  </div>
-  <style scope id="setting"></style>
-  <style scope id="update"></style>
-  <script type="text/javascript" src="script1.js"></script>
-  <!-- <style>
-    .container {
-    position: relative;
-    margin: 0 auto;
-    width: 650px !important
-    ; /* tamanho padrão */
-    height: 650px !important;
-  }
-  </style> -->
-  <audio id="background-music" loop>
-  <source src="slot-machine-payout-81725.mp3" type="audio/mpeg">
-  Seu navegador não suporta o elemento de áudio.
-</audio>
-    <audio id="background-music-winner" >
-  <source src="coin-donation-6-183893.mp3" type="audio/mpeg">
-  Seu navegador não suporta o elemento de áudio.
-</audio>
-    <audio id="background-music-faild" >
-  <source src="game-over-arcade-6435.mp3" type="audio/mpeg">
-  Seu navegador não suporta o elemento de áudio.
-</audio>
+
+
+    <audio id="background-music" loop>
+      <source src="slot-machine-payout-81725.mp3" type="audio/mpeg">
+      <!-- Seu navegador não suporta o elemento de áudio. -->
+    </audio>
+    <audio id="background-music-winner">
+      <source src="coin-donation-6-183893.mp3" type="audio/mpeg">
+      <!-- Seu navegador não suporta o elemento de áudio. -->
+    </audio>
+    <audio id="background-music-faild">
+      <source src="game-over-arcade-6435.mp3" type="audio/mpeg">
+      <!-- Seu navegador não suporta o elemento de áudio. -->
+    </audio>
 </body>
 
 </html>
