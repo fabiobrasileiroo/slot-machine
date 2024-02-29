@@ -12,18 +12,18 @@
     height: 650px;
   } */
 
-  @media screen and (max-width: 1439px) {
+/* @media screen and (max-width: 1439px) {
     /* .container {
       width: 600px !important;
       height: 600px !important;
-    } */
+    } /
   }
 
   @media screen and (max-width: 1023px) {
     /* .container {
       width: 500px !important;
       height: 500px !important;
-    } */
+    } /
     h2 {
       font-size: 75px !important;
     }
@@ -33,7 +33,7 @@
     /* .container {
       width: 300px !important;
       height: 300px !important;
-    } */
+    } /
     h2 {
       font-size: 60px !important;
     }
@@ -43,7 +43,7 @@
     /* .container {
       width: 250px !important;
       height: 250px !important;
-    } */
+    } /
     h2 {
       font-size: 40px !important;
     }
@@ -53,8 +53,56 @@
     /* .container {
       width: 200px !important;
       height: 200px !important;
-    } */
+    } /
     h2 {
       font-size: 35px !important;
     }
+  } */
+
+@media screen and (max-width: 1439px) {
+  /* .container {
+    width: 37.5rem !important; (600px / 16px)
+    height: 37.5rem !important; (600px / 16px)
+  } */
+}
+
+@media screen and (max-width: 1023px) {
+  /* .container {
+    width: 31.25rem !important; (500px / 16px)
+    height: 31.25rem !important; (500px / 16px)
+  } */
+  h2 {
+    font-size: 4.6875rem !important; /* (75px / 16px) */
   }
+}
+
+@media screen and (max-width: 767px) {
+  /* .container {
+    width: 18.75rem !important; (300px / 16px)
+    height: 18.75rem !important; (300px / 16px)
+  } */
+  h2 {
+    font-size: 3.05rem !important; /* (60px / 16px) */
+  }
+}
+
+@media screen and (max-width: 424px) {
+  /* .container {
+    width: 15.625rem !important; (250px / 16px)
+    height: 15.625rem !important; (250px / 16px)
+  } */
+  h2 {
+    font-size: 2.0rem !important; /* (40px / 16px) */
+  }
+  .machine {margin-top: 85px !important;}
+}
+
+@media screen and (max-width: 319px) {
+  /* .container {
+    width: 12.5rem !important; (200px / 16px)
+    height: 12.5rem !important; (200px / 16px)
+  } */
+  h2 {
+    font-size: 1.75rem !important; /* (35px / 16px) */
+  }
+}
