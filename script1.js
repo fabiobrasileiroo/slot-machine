@@ -303,7 +303,11 @@ window.raf = (function () {
       else if (window.innerWidth >= 425) {
         this.options.width = "450";
         this.options.height = "450";
-      } else if (window.innerWidth >= 320) {
+      } else if (window.innerHeight <= 320&&window.innerWidth >= 320) {
+        this.options.width = "300";
+        this.options.height = "300";
+      }
+      else if (window.innerWidth >= 320) {
         this.options.width = "300";
         this.options.height = "350";
       } else if (window.innerWidth < 320) {
