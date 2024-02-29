@@ -281,6 +281,9 @@ window.raf = (function () {
       if (window.innerWidth >= 1440) {
         this.options.width = "550";
         this.options.height = "550";
+      } else if(window.innerHeight <=1024 && window.innerWidth >= 1024) {
+        this.options.widget = "550"
+        this.options.height = "300"
       } else if (window.innerWidth >= 1024) {
         this.options.width = "550";
         this.options.height = "400";
