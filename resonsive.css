@@ -74,7 +74,7 @@
     width: 31.25rem !important; (500px / 16px)
     height: 31.25rem !important; (500px / 16px)
   } */
-  .container{
+  .container {
     margin-top: 100px !important;
   }
   .machine {
@@ -90,6 +90,12 @@
     width: 18.75rem !important; (300px / 16px)
     height: 18.75rem !important; (300px / 16px)
   } */
+  .container {
+    margin-top: 50px !important;
+  }
+  .machine {
+    margin-top: 50px !important;
+  }
   .frame-5 {
     line-height: 3rem !important;
   }
