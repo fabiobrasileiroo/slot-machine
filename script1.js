@@ -17,7 +17,7 @@ window.raf = (function () {
       height: "200",
       colNum: 3,
       rowNum: 9,
-      winRate: 100,
+      winRate: 1,
       autoPlay: false,
       autoSize: false,
       autoPlayTime: 10,
@@ -70,24 +70,23 @@ window.raf = (function () {
       console.log(result);
       var backDiv = document.querySelector(".back");
       // Altere o conteúdo da div para o valor desejado
-      if(result === defaultSettings.names[0]) {
-        backDiv.textContent = 'Premio: 0,01'
-      } else if(result === defaultSettings.names[1]) {
+      if (result === defaultSettings.names[0]) {
+        backDiv.textContent = "Premio: 0,01";
+      } else if (result === defaultSettings.names[1]) {
         backDiv.textContent = "Premio: 1,00"; //
-      }else if(result === defaultSettings.names[2]) {
+      } else if (result === defaultSettings.names[2]) {
         backDiv.textContent = "Premio: Duas rodadas"; //
-      }else if(result === defaultSettings.names[3]) {
+      } else if (result === defaultSettings.names[3]) {
         backDiv.textContent = "Premio: 10,00"; //
-      }else if(result === defaultSettings.names[4]) {
+      } else if (result === defaultSettings.names[4]) {
         backDiv.textContent = "Premio: Um monte de nada"; //
-      }else if(result === defaultSettings.names[5]) {
+      } else if (result === defaultSettings.names[5]) {
         backDiv.textContent = "Premio: Comida trocadoFood"; //
-      }else if(result === defaultSettings.names[6]) {
+      } else if (result === defaultSettings.names[6]) {
         backDiv.textContent = "Premio: Não foi dessa vez 🃏"; //
-      }else if(result === defaultSettings.names[7]) {
+      } else if (result === defaultSettings.names[7]) {
         backDiv.textContent = "Premio: Mais uma rodada"; //
-      }
-      else if(result === defaultSettings.names[8]) {
+      } else if (result === defaultSettings.names[8]) {
         backDiv.textContent = "Novo Valor"; //
       }
 
@@ -129,6 +128,19 @@ window.raf = (function () {
   //     );
   //   }
   // };
+  function toggleSettingStyle() {
+    var settingStyleTag = document.getElementById("setting");
+
+    // If settingStyleTag exists, remove it. Otherwise, create and append it.
+    if (settingStyleTag) {
+      settingStyleTag.parentNode.removeChild(settingStyleTag);
+    } else {
+      var settingStyleTag = document.createElement("style");
+      settingStyleTag.setAttribute("scope", "id");
+      settingStyleTag.setAttribute("id", "setting");
+      document.head.appendChild(settingStyleTag);
+    }
+  }
   SlotMachine.prototype.afterRun = function () {
     window.addEventListener("click", function () {
       if (!completed) {
@@ -152,6 +164,42 @@ window.raf = (function () {
         win = false;
 
         document.getElementById("background-music-faild").play();
+
+        const modalOverlay = document.getElementById("modalOverlay");
+        document.querySelector(".container").classList.toggle("z-index-zero");
+        modalOverlay.style.display = "flex";
+        // toggleSettingStyle();
+        // var settingStyleTag = document.getElementById("setting");
+        // if (settingStyleTag) {
+        //   settingStyleTag.parentNode.removeChild(settingStyleTag);
+        // }
+        // // Assuming modalOverlay is your modal overlay element
+
+        // // Remove the style tag with id "update"
+        // var updateStyleTag = document.getElementById("update");
+        // if (updateStyleTag) {
+        //   updateStyleTag.parentNode.removeChild(updateStyleTag);
+        // }
+
+        const openModalBtn = document.getElementById("openModal");
+        const closeModalBtn = document.getElementById("closeModal");
+        closeModalBtn.addEventListener("click", function () {
+          modalOverlay.style.display = "none";
+          // toggleSettingStyle();
+          document.querySelector(".container").classList.toggle("z-index-zero");
+
+          // Recreate the style tag with id "update"
+          var updateStyleTag = document.createElement("style");
+          updateStyleTag.setAttribute("scope", "id");
+          updateStyleTag.setAttribute("id", "setting");
+          document.head.appendChild(updateStyleTag);
+
+          // var updateStyleTag = document.createElement("style");
+          // updateStyleTag.setAttribute("scope", "id");
+          // updateStyleTag.setAttribute("id", "update");
+          // document.head.appendChild(updateStyleTag);
+        });
+
         break;
       }
     }
@@ -286,30 +334,25 @@ window.raf = (function () {
       //   this.options.widget = "550"
       //   this.options.height = "300"
       // }
-       else if (window.innerWidth >= 1024) {
-        this.options.width = "550";
-        this.options.height = "400";
-      }
-      else if(window.innerHeight <=768 && window.innerWidth >= 768) {
-        this.options.widget = "500"
-        this.options.height = "300"
-      }
-      else if (window.innerWidth >= 768) {
+      else if (window.innerWidth >= 1024) {
+        this.options.width = "650";// 550
+        this.options.height = "500"; // 400
+      } else if (window.innerHeight <= 768 && window.innerWidth >= 768) {
+        this.options.widget = "550";//500
+        this.options.height = "400";// 300
+      } else if (window.innerWidth >= 768) {
         this.options.width = "500";
         this.options.height = "500";
-      } 
-      else if(window.innerHeight >=425 && window.innerWidth >= 425) {
-        this.options.widget = "450"
-        this.options.height = "300"
-      }
-      else if (window.innerWidth >= 425) {
+      } else if (window.innerHeight >= 425 && window.innerWidth >= 425) {
+        this.options.widget = "450";
+        this.options.height = "300";
+      } else if (window.innerWidth >= 425) {
         this.options.width = "450";
         this.options.height = "450";
-      } else if (window.innerHeight <= 320&&window.innerWidth >= 320) {
+      } else if (window.innerHeight <= 320 && window.innerWidth >= 320) {
         this.options.width = "300";
         this.options.height = "300";
-      }
-      else if (window.innerWidth >= 320) {
+      } else if (window.innerWidth >= 320) {
         this.options.width = "300";
         this.options.height = "350";
       } else if (window.innerWidth < 320) {
@@ -467,7 +510,7 @@ window.raf = (function () {
       (random(2, 55) | 0) * this.colHeight +
       (((next + 0.5) * this.rowHeight) | 0) -
       this.halfHeight;
-    var n = (random(2, 25) | 0) * fps;
+    var n = (random(2, 24) | 0) * fps;
     this.speed = (2 * s) / (n + 1);
     this.acceleration = this.speed / n;
   };

@@ -51,6 +51,9 @@
   z-index: 1;
   background-clip: content-box;
 }
+.container.z-index-zero:before {
+    z-index: 0;
+}
 .container:after {
   content: "";
   position: absolute;

@@ -27,7 +27,8 @@ h1.main, p.demos {
 	top: 0px;
 	left: 0px;
 	width: 100%;
-	height: 100%;
+	/* height: 100%; */
+	height: 0%;
 	z-index: 0;
 	background: -webkit-radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.7));
 	background: -moz-radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.7));
@@ -113,7 +114,7 @@ h1.main, p.demos {
 .sp-globe {
 	position: absolute;
 	width: 282px;
-	height: 273px;
+	/* height: 273px; */
 	left: 50%;
 	top: 50%;
 	margin: -137px 0 0 -141px;

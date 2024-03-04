@@ -83,6 +83,7 @@
       .card.flipped {
         transform: rotateY(180deg);
       }
+
       .card.flipped1 {
         transform: rotateY(0deg);
       }
@@ -90,10 +91,138 @@
     <div class="container1">
       <div class="card">
         <div class="front">???</div>
-        <div class="back"  >premio</div>
+        <div class="back">premio</div>
+      </div>
+    </div>
+    <style>
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal {
+        background-color: #ffffffb6;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+      }
+
+      .modal h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .modal p {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      .btn-close {
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-right: 10px;
+      }
+
+      .btn-close:hover {
+        background-color: #2980b9;
+      }
+
+      .btn.play {
+        position: relative;
+        width: 120px;
+        height: 50px;
+        border: none;
+        border: 2px solid rgba(255, 255, 255, 0.9);
+        cursor: pointer;
+        letter-spacing: 2px;
+        font-weight: 900;
+        background: none;
+        color: #fff;
+        align-self: center;
+        margin-top: -10px;
+        transition: all 400ms cubic-bezier(0.8, 0, 0.33, 1);
+        overflow: hidden;
+      }
+
+      .btn.play::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 0%;
+        left: 0;
+        bottom: 0;
+        border-radius: 50% 50% 0 0;
+        background: #fff;
+        transition: all 400ms cubic-bezier(0.8, 0, 0.33, 1);
+        z-index: -1;
+      }
+
+      .btn.play::after {
+        content: "PLAY";
+        position: absolute;
+        height: 180%;
+        right: 0;
+        top: 0;
+        color: #000;
+        transform: translateY(-100%);
+        font-size: 1.4em;
+        transition: all 400ms cubic-bezier(0.8, 0, 0.33, 1);
+      }
+
+      /* .btn.play:hover::after {
+        transform: translateY(15%);
+      } */
+
+      .btn.play:hover::after {
+        transform: translate(-50%, 15%);
+      }
+
+
+      .btn.play:hover::before {
+        height: 180%;
+      }
+
+      .btn.play:focus {
+        transform: scale(0.9);
+        outline: none;
+      }
+    </style>
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal" id="modalContent">
+        <!-- <h2>Welcome to My Website</h2> -->
+        <p>Você perdeu tente novamente</p>
+        <button class="btn-close" id="closeModal">Close</button>
+        <button class="btn play">PLAY</button>
       </div>
     </div>
 
+    <!-- <button id="openModal">Open Modal</button> -->
+    <script>
+      const openModalBtn = document.getElementById('openModal');
+      const closeModalBtn = document.getElementById('closeModal');
+      const modalOverlay = document.getElementById('modalOverlay');
+
+      openModalBtn.addEventListener('click', function () {
+        modalOverlay.style.display = 'flex';
+      });
+
+      closeModalBtn.addEventListener('click', function () {
+        modalOverlay.style.display = 'none';
+      });
+
+    </script>
 
     <audio id="background-music" loop>
       <source src="slot-machine-payout-81725.mp3" type="audio/mpeg">
