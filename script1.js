@@ -335,10 +335,10 @@ window.raf = (function () {
       //   this.options.height = "300"
       // }
       else if (window.innerWidth >= 1024) {
-        this.options.width = "900";// 550
+        this.options.width = "1100";// 550
         this.options.height = "600"; // 400
       } else if (window.innerHeight <= 768 && window.innerWidth >= 768) {
-        this.options.widget = "900";//500
+        this.options.widget = "1100";//500
         this.options.height = "500";// 300
       } else if (window.innerWidth >= 768) {
         this.options.width = "600";// 500
