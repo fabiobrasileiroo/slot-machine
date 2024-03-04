@@ -17,7 +17,7 @@ window.raf = (function () {
       height: "200",
       colNum: 3,
       rowNum: 9,
-      winRate: 20,
+      winRate: 49,
       autoPlay: false,
       autoSize: false,
       autoPlayTime: 10,
