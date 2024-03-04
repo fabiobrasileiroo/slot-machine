@@ -165,9 +165,9 @@ window.raf = (function () {
 
         document.getElementById("background-music-faild").play();
 
-        const modalOverlay = document.getElementById("modalOverlay");
-        document.querySelector(".container").classList.toggle("z-index-zero");
-        modalOverlay.style.display = "flex";
+        // const modalOverlay = document.getElementById("modalOverlay");
+        // document.querySelector(".container").classList.toggle("z-index-zero");
+        // modalOverlay.style.display = "flex";
         // toggleSettingStyle();
         // var settingStyleTag = document.getElementById("setting");
         // if (settingStyleTag) {
@@ -181,24 +181,24 @@ window.raf = (function () {
         //   updateStyleTag.parentNode.removeChild(updateStyleTag);
         // }
 
-        const openModalBtn = document.getElementById("openModal");
-        const closeModalBtn = document.getElementById("closeModal");
-        closeModalBtn.addEventListener("click", function () {
-          modalOverlay.style.display = "none";
-          // toggleSettingStyle();
-          document.querySelector(".container").classList.toggle("z-index-zero");
+        // const openModalBtn = document.getElementById("openModal");
+        // const closeModalBtn = document.getElementById("closeModal");
+        // closeModalBtn.addEventListener("click", function () {
+        //   modalOverlay.style.display = "none";
+        //   // toggleSettingStyle();
+        //   document.querySelector(".container").classList.toggle("z-index-zero");
 
-          // Recreate the style tag with id "update"
-          var updateStyleTag = document.createElement("style");
-          updateStyleTag.setAttribute("scope", "id");
-          updateStyleTag.setAttribute("id", "setting");
-          document.head.appendChild(updateStyleTag);
+        //   // Recreate the style tag with id "update"
+        //   var updateStyleTag = document.createElement("style");
+        //   updateStyleTag.setAttribute("scope", "id");
+        //   updateStyleTag.setAttribute("id", "setting");
+        //   document.head.appendChild(updateStyleTag);
 
-          // var updateStyleTag = document.createElement("style");
-          // updateStyleTag.setAttribute("scope", "id");
-          // updateStyleTag.setAttribute("id", "update");
-          // document.head.appendChild(updateStyleTag);
-        });
+        //   // var updateStyleTag = document.createElement("style");
+        //   // updateStyleTag.setAttribute("scope", "id");
+        //   // updateStyleTag.setAttribute("id", "update");
+        //   // document.head.appendChild(updateStyleTag);
+        // });
 
         break;
       }
