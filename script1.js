@@ -25,7 +25,7 @@ window.raf = (function () {
       height: "200",
       colNum: 3,
       rowNum: 9,
-      winRate: 4,
+      winRate: 100,
       autoPlay: false,
       autoSize: false,
       autoPlayTime: 10,
@@ -144,19 +144,20 @@ window.raf = (function () {
   //     );
   //   }
   // };
-  function toggleSettingStyle() {
-    var settingStyleTag = document.getElementById("setting");
 
-    // If settingStyleTag exists, remove it. Otherwise, create and append it.
-    if (settingStyleTag) {
-      settingStyleTag.parentNode.removeChild(settingStyleTag);
-    } else {
-      var settingStyleTag = document.createElement("style");
-      settingStyleTag.setAttribute("scope", "id");
-      settingStyleTag.setAttribute("id", "setting");
-      document.head.appendChild(settingStyleTag);
-    }
-  }
+  // function toggleSettingStyle() {
+  //   var settingStyleTag = document.getElementById("setting");
+
+  //   // If settingStyleTag exists, remove it. Otherwise, create and append it.
+  //   if (settingStyleTag) {
+  //     settingStyleTag.parentNode.removeChild(settingStyleTag);
+  //   } else {
+  //     var settingStyleTag = document.createElement("style");
+  //     settingStyleTag.setAttribute("scope", "id");
+  //     settingStyleTag.setAttribute("id", "setting");
+  //     document.head.appendChild(settingStyleTag);
+  //   }
+  // }
   // if (defaultSettings.clickVezes % 2 === 0) {
   //   defaultSettings.winRate = 100;
   // } else {
@@ -188,7 +189,7 @@ window.raf = (function () {
         win = false;
 
         document.getElementById("background-music-faild").play();
-
+        // modal close
         // const modalOverlay = document.getElementById("modalOverlay");
         // document.querySelector(".container").classList.toggle("z-index-zero");
         // modalOverlay.style.display = "flex";
@@ -197,9 +198,9 @@ window.raf = (function () {
         // if (settingStyleTag) {
         //   settingStyleTag.parentNode.removeChild(settingStyleTag);
         // }
-        // // Assuming modalOverlay is your modal overlay element
+        // Assuming modalOverlay is your modal overlay element
 
-        // // Remove the style tag with id "update"
+        // Remove the style tag with id "update"
         // var updateStyleTag = document.getElementById("update");
         // if (updateStyleTag) {
         //   updateStyleTag.parentNode.removeChild(updateStyleTag);
@@ -209,19 +210,19 @@ window.raf = (function () {
         // const closeModalBtn = document.getElementById("closeModal");
         // closeModalBtn.addEventListener("click", function () {
         //   modalOverlay.style.display = "none";
-        //   // toggleSettingStyle();
-        //   document.querySelector(".container").classList.toggle("z-index-zero");
+          // toggleSettingStyle();
+          // document.querySelector(".container").classList.toggle("z-index-zero");
 
-        //   // Recreate the style tag with id "update"
-        //   var updateStyleTag = document.createElement("style");
-        //   updateStyleTag.setAttribute("scope", "id");
-        //   updateStyleTag.setAttribute("id", "setting");
-        //   document.head.appendChild(updateStyleTag);
+          // // Recreate the style tag with id "update"
+          // var updateStyleTag = document.createElement("style");
+          // updateStyleTag.setAttribute("scope", "id");
+          // updateStyleTag.setAttribute("id", "setting");
+          // document.head.appendChild(updateStyleTag);
 
-        //   // var updateStyleTag = document.createElement("style");
-        //   // updateStyleTag.setAttribute("scope", "id");
-        //   // updateStyleTag.setAttribute("id", "update");
-        //   // document.head.appendChild(updateStyleTag);
+          // var updateStyleTag = document.createElement("style");
+          // updateStyleTag.setAttribute("scope", "id");
+          // updateStyleTag.setAttribute("id", "update");
+          // document.head.appendChild(updateStyleTag);
         // });
 
         break;

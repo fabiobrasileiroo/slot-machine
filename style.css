@@ -25,7 +25,8 @@
     #afb0b7 20%,
     #e9e9e9 35%,
     #8f9e90 69%,
-    /* #DEB493 100%, */ #e7e7e7 100%
+    /* #DEB493 100%, */
+    #e7e7e7 100%
   );
   box-shadow: inset 0 0 50px #000000;
   position: relative;
@@ -51,7 +52,7 @@
   background-clip: content-box;
 }
 .container.z-index-zero:before {
-  z-index: 0;
+    z-index: 0;
 }
 .container:after {
   content: "";
@@ -125,7 +126,7 @@
 }
 .paraense:after {
   /* background-image: url(//bannerflow.blob.core.windows.net/resources/watermelon-53668bfb-8cd0-4107-b9be-b2379984b9fb.svg?v=636058905940602803); */
-  background-image: url(assets/passeio.png);
+  background-image: url(assets/paraense.png);
 }
 /* .banana:after     {background-image:  url(//bannerflow.blob.core.windows.net/resources/banana-a70ac7d5-feda-4c4a-80bc-1fefc5cf1f9f.svg?v=636058905940602803);} */
 .canvi:after {
@@ -199,8 +200,9 @@
   animation: rotateBackground 12s linear infinite;
 }
 .winner:after {
-  background: url(//bannerflow.blob.core.windows.net/resources/winner1-e3971196-c01b-4985-8303-3a1829f2d529.svg?v=636058905940602803)
-    /* background: url(trocadinhosMascote.png) */ no-repeat center;
+  /* background: url(//bannerflow.blob.core.windows.net/resources/winner1-e3971196-c01b-4985-8303-3a1829f2d529.svg?v=636058905940602803) */
+  background: url(assets/PARABENS.png)
+    no-repeat center;
   background-size: 50% 50%;
   -webkit-animation: scaleForeground 2s linear infinite;
   -moz-animation: scaleForeground 2s linear infinite;
