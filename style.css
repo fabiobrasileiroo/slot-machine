@@ -199,8 +199,8 @@
   animation: rotateBackground 12s linear infinite;
 }
 .winner:after {
-  /* background: url(//bannerflow.blob.core.windows.net/resources/winner1-e3971196-c01b-4985-8303-3a1829f2d529.svg?v=636058905940602803) */
-  background: url(trocadinhosMascote.png)
+  background: url(//bannerflow.blob.core.windows.net/resources/winner1-e3971196-c01b-4985-8303-3a1829f2d529.svg?v=636058905940602803)
+  /* background: url(trocadinhosMascote.png) */
     no-repeat center;
   background-size: 50% 50%;
   -webkit-animation: scaleForeground 2s linear infinite;
