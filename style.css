@@ -140,8 +140,9 @@
   /* background-image: url(//bannerflow.blob.core.windows.net/resources/prune-eb66576f-c6ba-4c4a-88c6-b659ce01f771.svg?v=636058905940602803); */
   background-image: url(assets/sunset.png);
 }
-.bigwin:after {
-  background-image: url(//bannerflow.blob.core.windows.net/resources/bigwin-ea7b5813-de4b-40c6-b708-e992f57be3e0.svg?v=636058905940602803);
+.tribes:after {
+  /* background-image: url(//bannerflow.blob.core.windows.net/resources/bigwin-ea7b5813-de4b-40c6-b708-e992f57be3e0.svg?v=636058905940602803); */
+  background-image: url(assets/WhatsApp\ Image\ 2024-03-06\ at\ 13.23.47.jpeg);
 }
 .trocados:after {
   background-image: url(./assets/troc.png);

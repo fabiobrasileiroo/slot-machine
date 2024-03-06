@@ -1,3 +1,6 @@
+// var clickVezes = 0;
+// var globalResult = null;
+// localStorage.setItem.clickVezes;
 var fps = 60;
 window.raf = (function () {
   return (
@@ -9,7 +12,11 @@ window.raf = (function () {
     }
   );
 })();
-let clickVezes
+// function resultadoShowWin(resultDados) {
+//   var res = resultDados;
+//   return res;
+// }
+// var clickVezes = 0
 /*--------------=== Slot machine definition ===--------------*/
 (function () {
   var NAME = "SlotMachine",
@@ -37,7 +44,7 @@ let clickVezes
         "canvi",
         "pizza",
         "sunset",
-        "bigwin",
+        "tribes",
         "trocados",
       ],
     },
@@ -56,10 +63,16 @@ let clickVezes
     this.rotateHandle = this.rotateHandle.bind(this);
     this.colArr = [];
     this.options = {};
+    // this.resultadoShowWin = this.
   };
   SlotMachine.prototype.beforeRun = function () {
     document.getElementById("background-music").play();
-
+    // clickVezes++;
+    // console.log("click", clickVezes);
+    // console.log("win", defaultSettings.winRate);
+    // clickVezes % 2 === 0
+    //   ? (defaultSettings.winRate = 100)
+    //   : (defaultSettings.winRate = 4);
     if (completed) {
       this.showWin(false);
       completed = false;
@@ -68,7 +81,9 @@ let clickVezes
         this.options.names[
           random((this.options.rowNum * 100) / this.options.winRate) | 0
         ]; //set winrate
-      console.log(result);
+      // console.log(result);
+      // globalResult = result;
+      // resultadoShowWin(result);
       var backDiv = document.querySelector(".back");
       // Altere o conteúdo da div para o valor desejado
       if (result === defaultSettings.names[0]) {
@@ -76,11 +91,11 @@ let clickVezes
       } else if (result === defaultSettings.names[1]) {
         backDiv.textContent = "Prêmio: 1 Voucher "; //
       } else if (result === defaultSettings.names[2]) {
-        backDiv.textContent = "Prêmio: 1+ rodada"; //
+        backDiv.textContent = "Prêmio: +1 uma rodada "; //
       } else if (result === defaultSettings.names[3]) {
         backDiv.textContent = "Prêmio: 1 Voucher"; //
       } else if (result === defaultSettings.names[4]) {
-        backDiv.textContent = "Prêmio: 1+ rodada "; //
+        backDiv.textContent = "Prêmio: +1 uma rodada "; //
       } else if (result === defaultSettings.names[5]) {
         backDiv.textContent = "Prêmio: 1 Voucher"; //
       } else if (result === defaultSettings.names[6]) {
@@ -142,8 +157,15 @@ let clickVezes
       document.head.appendChild(settingStyleTag);
     }
   }
+  // if (defaultSettings.clickVezes % 2 === 0) {
+  //   defaultSettings.winRate = 100;
+  // } else {
+  //   defaultSettings.winRate = 4;
+  // }
+  // console.log(defaultSettings.clickVezes);
+  // console.log("win estar em ", defaultSettings.winRate);
   SlotMachine.prototype.afterRun = function () {
-    
+    // defaultSettings.clickVezes++;
     window.addEventListener("click", function () {
       if (!completed) {
         var containers = document.querySelectorAll(".container1");
@@ -253,6 +275,11 @@ let clickVezes
   SlotMachine.prototype.showWin = function (show) {
     var winner = document.querySelector(".winner");
     if (winner) winner.className = show ? "winner active" : "winner";
+    //aqui
+    // console.log("chego showWin", resultadoShowWin);
+    // console.log("winner de algo =>", winner);
+    // console.log("show    =>", show);
+    // console.log(globalResult);
   };
   SlotMachine.prototype.init = function () {
     //reset all
@@ -407,6 +434,7 @@ let clickVezes
         this.options.machineColor + " " + getLighter(this.options.machineColor),
     });
     var winnerSize = 1.2 * Math.max(this.options.height, this.options.width);
+
     settingStyle += getStyle(".winner:before,.winner:after", {
       height: winnerSize + "px",
       width: winnerSize + "px",
@@ -487,6 +515,7 @@ let clickVezes
     this.arr = [];
     this.colHeight = this.rowHeight = 0;
     this.loop = 2;
+    // console.log("this.before =>", this.beforeRun);
   };
   SlotColumn.prototype.init = function () {
     this.col.empty();
