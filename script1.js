@@ -85,7 +85,7 @@ window.raf = (function () {
       } else if (result === defaultSettings.names[6]) {
         backDiv.textContent = "Prêmio: 1 Voucher"; //
       } else if (result === defaultSettings.names[7]) {
-        backDiv.textContent = "Não foi dessa vez 🃏te enganei"; //
+        backDiv.textContent = "Coringa:Monte de nada🃏"; //
       } else if (result === defaultSettings.names[8]) {
         backDiv.textContent = "Prêmio: R$0,01 na carteira"; //
       }
@@ -335,14 +335,14 @@ window.raf = (function () {
       //   this.options.height = "300"
       // }
       else if (window.innerWidth >= 1024) {
-        this.options.width = "900";// 550
+        this.options.width = "900"; // 550
         this.options.height = "600"; // 400
       } else if (window.innerHeight <= 768 && window.innerWidth >= 768) {
-        this.options.widget = "900";//500
-        this.options.height = "500";// 300
+        this.options.widget = "900"; //500
+        this.options.height = "500"; // 300
       } else if (window.innerWidth >= 768) {
-        this.options.width = "600";// 500
-        this.options.height = "600";// 500
+        this.options.width = "600"; // 500
+        this.options.height = "600"; // 500
       } else if (window.innerHeight >= 425 && window.innerWidth >= 425) {
         this.options.widget = "450";
         this.options.height = "300";
