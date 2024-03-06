@@ -18,7 +18,7 @@ let clickVezes
       height: "200",
       colNum: 3,
       rowNum: 9,
-      winRate: 5,
+      winRate: 4,
       autoPlay: true,
       autoSize: false,
       autoPlayTime: 10,
