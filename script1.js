@@ -101,7 +101,7 @@ window.raf = (function () {
       } else if (result === defaultSettings.names[6]) {
         backDiv.textContent = "Prêmio: 1 Voucher"; //
       } else if (result === defaultSettings.names[7]) {
-        backDiv.textContent = "1 Passeio Turistico"; //
+        backDiv.textContent = "1 Passeio Turístico"; //
       } else if (result === defaultSettings.names[8]) {
         backDiv.textContent = "Prêmio: R$0,01 na carteira"; //
       }
