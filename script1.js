@@ -71,23 +71,23 @@ window.raf = (function () {
       var backDiv = document.querySelector(".back");
       // Altere o conteúdo da div para o valor desejado
       if (result === defaultSettings.names[0]) {
-        backDiv.textContent = "Premio: 1 Voucher";
+        backDiv.textContent = "Prêmio: 1 Voucher";
       } else if (result === defaultSettings.names[1]) {
-        backDiv.textContent = "Premio: 1 Voucher "; //
+        backDiv.textContent = "Prêmio: 1 Voucher "; //
       } else if (result === defaultSettings.names[2]) {
-        backDiv.textContent = "Premio: Duas rodadas"; //
+        backDiv.textContent = "Prêmio: Duas rodadas"; //
       } else if (result === defaultSettings.names[3]) {
-        backDiv.textContent = "Premio: 1 Voucher"; //
+        backDiv.textContent = "Prêmio: 1 Voucher"; //
       } else if (result === defaultSettings.names[4]) {
-        backDiv.textContent = "Premio: Um monte de nada"; //
+        backDiv.textContent = "Prêmio: Um monte de nada"; //
       } else if (result === defaultSettings.names[5]) {
-        backDiv.textContent = "Premio: 1 Voucher"; //
+        backDiv.textContent = "Prêmio: 1 Voucher"; //
       } else if (result === defaultSettings.names[6]) {
-        backDiv.textContent = "Premio: 1 Voucher"; //
+        backDiv.textContent = "Prêmio: 1 Voucher"; //
       } else if (result === defaultSettings.names[7]) {
-        backDiv.textContent = "Premio: Não foi dessa vez 🃏"; //
+        backDiv.textContent = "Prêmio: Não foi dessa vez 🃏"; //
       } else if (result === defaultSettings.names[8]) {
-        backDiv.textContent = "Premio: R$0,01 na carteira"; //
+        backDiv.textContent = "Prêmio: R$0,01 na carteira"; //
       }
 
       for (var i = 0; i < this.options.colNum; i++) {
