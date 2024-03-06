@@ -9,6 +9,7 @@ window.raf = (function () {
     }
   );
 })();
+let clickVezes
 /*--------------=== Slot machine definition ===--------------*/
 (function () {
   var NAME = "SlotMachine",
@@ -17,8 +18,8 @@ window.raf = (function () {
       height: "200",
       colNum: 3,
       rowNum: 9,
-      winRate: 10,
-      autoPlay: false,
+      winRate: 5,
+      autoPlay: true,
       autoSize: false,
       autoPlayTime: 10,
       layout: "compact",
@@ -29,13 +30,13 @@ window.raf = (function () {
       // machineColor    : 'rgba(120,60,30,1)',
       machineColor: "rgba(255,255,255,1)",
       names: [
-        "seven",
-        "lemon",
-        "cherry",
-        "watermelon",
-        "banana",
-        "bar",
-        "prune",
+        "ancho",
+        "hope",
+        "nilton",
+        "paraense",
+        "canvi",
+        "pizza",
+        "sunset",
         "bigwin",
         "trocados",
       ],
@@ -75,11 +76,11 @@ window.raf = (function () {
       } else if (result === defaultSettings.names[1]) {
         backDiv.textContent = "Prêmio: 1 Voucher "; //
       } else if (result === defaultSettings.names[2]) {
-        backDiv.textContent = "Prêmio: Duas rodadas"; //
+        backDiv.textContent = "Prêmio: 1+ rodada"; //
       } else if (result === defaultSettings.names[3]) {
         backDiv.textContent = "Prêmio: 1 Voucher"; //
       } else if (result === defaultSettings.names[4]) {
-        backDiv.textContent = "Prêmio: Um monte de nada"; //
+        backDiv.textContent = "Prêmio: 1+ rodada "; //
       } else if (result === defaultSettings.names[5]) {
         backDiv.textContent = "Prêmio: 1 Voucher"; //
       } else if (result === defaultSettings.names[6]) {
@@ -142,6 +143,7 @@ window.raf = (function () {
     }
   }
   SlotMachine.prototype.afterRun = function () {
+    
     window.addEventListener("click", function () {
       if (!completed) {
         var containers = document.querySelectorAll(".container1");

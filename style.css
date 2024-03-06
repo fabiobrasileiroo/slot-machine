@@ -112,31 +112,31 @@
 .trocados:after {
   background-image: url("./trocados.svg");
 }
-.seven:after {
+.ancho:after {
   /* background-image: url(//bannerflow.blob.core.windows.net/resources/seven-6803e6a7-66bb-475d-b201-e2551ac41f77.svg?v=636058905940602803); */
   background-image: url(assets/ancho.png);
 }
-.lemon:after {
+.hope:after {
   /* background-image: url(//bannerflow.blob.core.windows.net/resources/lemon-427191a8-0a28-43fb-8bf9-6a68df0d8d0d.svg?v=636058905940602803); */
   background-image: url(assets/hope.png);
 }
 /* .cherry:after     {background-image : url(//bannerflow.blob.core.windows.net/resources/cherry-73d79a68-bece-46b2-9f93-fcc4617b6dbc.svg?v=636058905940602803);} */
-.cherry:after {
+.nilton:after {
   background-image: url(./niltoncorte.png);
 }
-.watermelon:after {
+.paraense:after {
   /* background-image: url(//bannerflow.blob.core.windows.net/resources/watermelon-53668bfb-8cd0-4107-b9be-b2379984b9fb.svg?v=636058905940602803); */
   background-image: url(assets/paraense.png);
 }
 /* .banana:after     {background-image:  url(//bannerflow.blob.core.windows.net/resources/banana-a70ac7d5-feda-4c4a-80bc-1fefc5cf1f9f.svg?v=636058905940602803);} */
-.banana:after {
+.canvi:after {
   background-image: url(./canvi.png);
 }
-.bar:after {
+.pizza:after {
   /* background-image: url(//bannerflow.blob.core.windows.net/resources/bar-69414337-7bd5-4fa0-9dfd-3f73eb313a4d.svg?v=636058905940602803); */
   background-image: url(assets/pizza.png);
 }
-.prune:after {
+.sunset:after {
   /* background-image: url(//bannerflow.blob.core.windows.net/resources/prune-eb66576f-c6ba-4c4a-88c6-b659ce01f771.svg?v=636058905940602803); */
   background-image: url(assets/sunset.png);
 }
