@@ -89,11 +89,11 @@ window.raf = (function () {
       if (result === defaultSettings.names[0]) {
         backDiv.textContent = "Prêmio: 1 Voucher";
       } else if (result === defaultSettings.names[1]) {
-        backDiv.textContent = "Prêmio: 1 Voucher "; //
+        backDiv.textContent = "Prêmio: Passaporte"; //
       } else if (result === defaultSettings.names[2]) {
         backDiv.textContent = "Prêmio: +1 uma rodada "; //
       } else if (result === defaultSettings.names[3]) {
-        backDiv.textContent = "Prêmio: 1 Voucher"; //
+        backDiv.textContent = "Prêmio1 Voucher R$100"; //
       } else if (result === defaultSettings.names[4]) {
         backDiv.textContent = "Prêmio: +1 uma rodada "; //
       } else if (result === defaultSettings.names[5]) {
@@ -101,7 +101,7 @@ window.raf = (function () {
       } else if (result === defaultSettings.names[6]) {
         backDiv.textContent = "Prêmio: 1 Voucher"; //
       } else if (result === defaultSettings.names[7]) {
-        backDiv.textContent = "Coringa:Monte de nada🃏"; //
+        backDiv.textContent = "1 Passeio Turistico"; //
       } else if (result === defaultSettings.names[8]) {
         backDiv.textContent = "Prêmio: R$0,01 na carteira"; //
       }
