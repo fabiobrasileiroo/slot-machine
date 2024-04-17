@@ -240,6 +240,23 @@
       <source src="game-over-arcade-6435.mp3" type="audio/mpeg">
       <!-- Seu navegador não suporta o elemento de áudio. -->
     </audio>
+    <script>
+
+
+      const apiUrl = 'https://node-api-videos-uka2.onrender.com/videos';
+      var porcetagemApi
+      async function getAllPosts() {
+        const response = await fetch(apiUrl)
+        console.log(response)
+        const data = await response.json()
+        console.log(data)
+        data.map((post) => {
+          console.log(post.duration)
+          porcetagemApi = post.duration
+        })
+      }
+      getAllPosts()
+    </script>
 </body>
 
 </html>

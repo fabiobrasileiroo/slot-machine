@@ -1,6 +1,21 @@
 // var clickVezes = 0;
 // var globalResult = null;
 // localStorage.setItem.clickVezes;
+const apiUrl = 'https://node-api-videos-uka2.onrender.com/videos';
+var porcetagemApi
+async function getAllPosts() {
+  const response = await fetch(apiUrl)
+  console.log(response)
+  const data = await response.json()
+  console.log(data)
+  data.map((post) => {
+    console.log(post.duration)
+    porcetagemApi = post.duration
+  })
+}
+getAllPosts()
+
+
 var fps = 60;
 window.raf = (function () {
   return (
@@ -18,6 +33,15 @@ window.raf = (function () {
 // }
 // var clickVezes = 0
 /*--------------=== Slot machine definition ===--------------*/
+
+// fetch('https://node-api-videos-uka2.onrender.com/videos')
+// .then(data => {
+// return data.json();
+// })
+// .then(post => {
+// console.log(post.duration);
+// });
+
 (function () {
   var NAME = "SlotMachine",
     defaultSettings = {
@@ -25,7 +49,7 @@ window.raf = (function () {
       height: "200",
       colNum: 3,
       rowNum: 9,
-      winRate: 30,
+      winRate: porcetagemApi,
       autoPlay: false,
       autoSize: false,
       autoPlayTime: 10,
@@ -79,7 +103,7 @@ window.raf = (function () {
       var result = null;
       result =
         this.options.names[
-          random((this.options.rowNum * 100) / this.options.winRate) | 0
+        random((this.options.rowNum * 100) / this.options.winRate) | 0
         ]; //set winrate
       // console.log(result);
       // globalResult = result;
@@ -210,19 +234,19 @@ window.raf = (function () {
         // const closeModalBtn = document.getElementById("closeModal");
         // closeModalBtn.addEventListener("click", function () {
         //   modalOverlay.style.display = "none";
-          // toggleSettingStyle();
-          // document.querySelector(".container").classList.toggle("z-index-zero");
+        // toggleSettingStyle();
+        // document.querySelector(".container").classList.toggle("z-index-zero");
 
-          // // Recreate the style tag with id "update"
-          // var updateStyleTag = document.createElement("style");
-          // updateStyleTag.setAttribute("scope", "id");
-          // updateStyleTag.setAttribute("id", "setting");
-          // document.head.appendChild(updateStyleTag);
+        // // Recreate the style tag with id "update"
+        // var updateStyleTag = document.createElement("style");
+        // updateStyleTag.setAttribute("scope", "id");
+        // updateStyleTag.setAttribute("id", "setting");
+        // document.head.appendChild(updateStyleTag);
 
-          // var updateStyleTag = document.createElement("style");
-          // updateStyleTag.setAttribute("scope", "id");
-          // updateStyleTag.setAttribute("id", "update");
-          // document.head.appendChild(updateStyleTag);
+        // var updateStyleTag = document.createElement("style");
+        // updateStyleTag.setAttribute("scope", "id");
+        // updateStyleTag.setAttribute("id", "update");
+        // document.head.appendChild(updateStyleTag);
         // });
 
         break;
@@ -571,8 +595,8 @@ window.raf = (function () {
 //random in range
 var random = function () {
   var isNumeric = function (n) {
-      return !isNaN(parseFloat(n)) && isFinite(n);
-    },
+    return !isNaN(parseFloat(n)) && isFinite(n);
+  },
     val = Math.random(),
     arg = arguments;
   return isNumeric(arg[0])
