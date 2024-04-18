@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" href="./css.css">
   <link rel="stylesheet" href="./resonsive.css">
+
 </head>
 
 <body>
@@ -38,7 +39,7 @@
     </div>
     <style scope id="setting"></style>
     <style scope id="update"></style>
-    <script type="text/javascript" src="script1.js"></script>
+    <script type="text/javascript"  src="script1.js"></script>
     <style>
       .container1 {
         margin-top: 1rem !important;
@@ -211,7 +212,7 @@
     </div>
 
     <!-- <button id="openModal">Open Modal</button> -->
-    <script>
+    <!-- <script>
       const openModalBtn = document.getElementById('openModal');
       const closeModalBtn = document.getElementById('closeModal');
       const modalOverlay = document.getElementById('modalOverlay');
@@ -224,7 +225,7 @@
         modalOverlay.style.display = 'none';
       });
 
-    </script>
+    </script> -->
     <div class="cassino-img">
       <img src="./assets/Cassino-Logos-2.png" style="margin-top: 10px;" width="950" alt="">
     </div>
@@ -240,23 +241,7 @@
       <source src="game-over-arcade-6435.mp3" type="audio/mpeg">
       <!-- Seu navegador não suporta o elemento de áudio. -->
     </audio>
-    <script>
 
-
-      const apiUrl = 'https://node-api-videos-uka2.onrender.com/videos';
-      var porcetagemApi
-      async function getAllPosts() {
-        const response = await fetch(apiUrl)
-        console.log(response)
-        const data = await response.json()
-        console.log(data)
-        data.map((post) => {
-          console.log(post.duration)
-          porcetagemApi = post.duration
-        })
-      }
-      getAllPosts()
-    </script>
 </body>
 
 </html>

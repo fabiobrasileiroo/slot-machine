@@ -1,20 +1,20 @@
 // var clickVezes = 0;
-// var globalResult = null;
-// localStorage.setItem.clickVezes;
 const apiUrl = 'https://node-api-videos-uka2.onrender.com/videos';
 var porcetagemApi
 async function getAllPosts() {
-  const response = await fetch(apiUrl)
-  console.log(response)
-  const data = await response.json()
-  console.log(data)
-  data.map((post) => {
-    console.log(post.duration)
-    porcetagemApi = post.duration
-  })
+const response = await fetch(apiUrl)
+console.log(response)
+const data = await response.json()
+console.log(data)
+data.map((post) => {
+ console.log(post.duration)
+ porcetagemApi = post.duration
+})
+ localStorage.setItem('porcetagem', porcetagemApi);
 }
 getAllPosts()
-
+// var globalResult = null;
+// localStorage.setItem.clickVezes;
 
 var fps = 60;
 window.raf = (function () {
@@ -49,7 +49,7 @@ window.raf = (function () {
       height: "200",
       colNum: 3,
       rowNum: 9,
-      winRate: porcetagemApi,
+      winRate: localStorage.getItem('porcetagem') ,
       autoPlay: false,
       autoSize: false,
       autoPlayTime: 10,
@@ -101,6 +101,7 @@ window.raf = (function () {
       this.showWin(false);
       completed = false;
       var result = null;
+      console.log(this.options.winRate)
       result =
         this.options.names[
         random((this.options.rowNum * 100) / this.options.winRate) | 0
