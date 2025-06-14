@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Barlow');
+@import url('./assets/fifties-movies.ttf');
 
 body { 
 	background: #310404 url('./assets/background.svg') no-repeat center center fixed; 

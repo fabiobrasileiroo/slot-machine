@@ -85,7 +85,7 @@
   background-position: center;
   background-size: cover;
 }
-.seven:after {
+/* .seven:after {
   background-image: url("./seven.svg");
 }
 .lemon:after {
@@ -108,43 +108,36 @@
 }
 .bigwin:after {
   background-image: url("./bigwin.svg");
-}
+} */
 .zaplus-azul:after {
-  background-image: url(assets/ancho.png);
+  background-image: url(assets/zaplus-azul.svg);
 }
 .zaplus-vermelho:after {
-  background-image: url(assets/hope.png);
+  background-image: url(assets/zaplus-vermelho.svg);
 }
 .santa-claudia:after {
-  background-image: url(./niltoncorte.png);
+  background-image: url(./santa-claudia.png);
 }
 .dr-guarana:after {
   background-image: url("./assets/dr-guarana.svg");
 }
-.paraense:after {
-  /* background-image: url(//bannerflow.blob.core.windows.net/resources/watermelon-53668bfb-8cd0-4107-b9be-b2379984b9fb.svg?v=636058905940602803); */
-  background-image: url(assets/paraense.png);
+.caboclo-picole:after {
+  background-image: url(assets/caboclo-picole.svg);
 }
-/* .banana:after     {background-image:  url(//bannerflow.blob.core.windows.net/resources/banana-a70ac7d5-feda-4c4a-80bc-1fefc5cf1f9f.svg?v=636058905940602803);} */
+
+.caprichoso-azul:after {
+  background-image: url(./assets/caprichoso-azul1.png);
+}
+.garantido-vermelho:after {
+  background-image: url(./assets/garantido-vermelho.png);
+}
+.cracha-pix:after {
+  background-image: url(./assets/cracha-pix.png);
+}
 .canvi:after {
-  background-image: url(./canvi.png);
+  background-image: url(./assets/canvi.svg);
 }
-.pizza:after {
-  /* background-image: url(//bannerflow.blob.core.windows.net/resources/bar-69414337-7bd5-4fa0-9dfd-3f73eb313a4d.svg?v=636058905940602803); */
-  background-image: url(assets/pizza.png);
-}
-.sunset:after {
-  /* background-image: url(//bannerflow.blob.core.windows.net/resources/prune-eb66576f-c6ba-4c4a-88c6-b659ce01f771.svg?v=636058905940602803); */
-  background-image: url(assets/sunset.png);
-}
-.tribes:after {
-  /* background-image: url(//bannerflow.blob.core.windows.net/resources/bigwin-ea7b5813-de4b-40c6-b708-e992f57be3e0.svg?v=636058905940602803); */
-  background-image: url(assets/WhatsApp\ Image\ 2024-03-06\ at\ 13.23.47.jpeg);
-}
-.trocados:after {
-  background-image: url(./assets/troc.png);
-}
-/* .orange:after     {background-image : url(//bannerflow.blob.core.windows.net/resources/orange-625c9be2-9b9e-45aa-b574-808930b71c41.svg?v=636058905940602803);} */
+
 /*-------------=== winner style ===-------------*/
 .winner {
   background-color: transparent;
@@ -198,7 +191,7 @@
 }
 .winner:after {
   /* background: url(//bannerflow.blob.core.windows.net/resources/winner1-e3971196-c01b-4985-8303-3a1829f2d529.svg?v=636058905940602803) */
-  background: url(assets/PARABENS.png)
+  background: url(assets/vc-ganhou.png)
     no-repeat center;
   background-size: 50% 50%;
   -webkit-animation: scaleForeground 2s linear infinite;
