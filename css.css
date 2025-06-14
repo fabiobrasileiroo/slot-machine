@@ -1,13 +1,28 @@
-@import url('./assets/fifties-movies.ttf');
+@font-face {
+  font-family: 'FiftiesMovies'; /* Nome que você vai usar no CSS */
+  src: url('./assets/fifties-movies.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
-body { 
+body {
+  background: #310404 url('./assets/background.svg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  font-family: 'FiftiesMovies', 'Barlow', sans-serif; /* Agora usa a fonte aqui */
+}
+
+/* body { 
 	background: #310404 url('./assets/background.svg') no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 	font-family: 'Barlow', sans-serif;
-}
+} */
 .container {
 	width: 100%;
 	position: relative;
