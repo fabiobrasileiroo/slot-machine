@@ -2,15 +2,15 @@
 const apiUrl = 'https://node-api-videos-uka2.onrender.com/videos';
 var porcetagemApi
 async function getAllPosts() {
-const response = await fetch(apiUrl)
-console.log(response)
-const data = await response.json()
-console.log(data)
-data.map((post) => {
- console.log(post.duration)
- porcetagemApi = post.duration
-})
- localStorage.setItem('porcetagem', porcetagemApi);
+  const response = await fetch(apiUrl)
+  console.log(response)
+  const data = await response.json()
+  console.log(data)
+  data.map((post) => {
+    console.log(post.duration)
+    porcetagemApi = post.duration
+  })
+  localStorage.setItem('porcetagem', porcetagemApi);
 }
 getAllPosts()
 // var globalResult = null;
@@ -49,7 +49,7 @@ window.raf = (function () {
       height: "200",
       colNum: 3,
       rowNum: 9,
-      winRate: localStorage.getItem('porcetagem') ,
+      winRate: localStorage.getItem('porcetagem'),
       autoPlay: false,
       autoSize: false,
       autoPlayTime: 10,
@@ -61,15 +61,15 @@ window.raf = (function () {
       // machineColor    : 'rgba(120,60,30,1)',
       machineColor: "rgba(255,255,255,1)",
       names: [
-        "ancho",
-        "hope",
-        "nilton",
-        "paraense",
+        "zaplus-azul",
+        "zaplus-vermelho",
+        "santa-claudia",
+        "dr-guarana",
+        "caboclo-picole",
+        "caprichoso-azul",
+        "garantido-vermelho",
+        "cracha-pix",
         "canvi",
-        "pizza",
-        "sunset",
-        "tribes",
-        "trocados",
       ],
     },
     completed = true,
@@ -112,23 +112,25 @@ window.raf = (function () {
       var backDiv = document.querySelector(".back");
       // Altere o conteúdo da div para o valor desejado
       if (result === defaultSettings.names[0]) {
-        backDiv.textContent = "Prêmio: 1 Voucher";
+        backDiv.textContent = "Prêmio: 1 Pano Azul";
       } else if (result === defaultSettings.names[1]) {
         backDiv.textContent = "Prêmio: Passaporte"; //
       } else if (result === defaultSettings.names[2]) {
-        backDiv.textContent = "Prêmio: +1 uma rodada "; //
+        backDiv.textContent = "Prêmio: 1 Pano Vermelho"; //
       } else if (result === defaultSettings.names[3]) {
-        backDiv.textContent = "Prêmio1 Voucher R$100"; //
+        backDiv.textContent = "Prêmio: 1 Refrigerante"; //
       } else if (result === defaultSettings.names[4]) {
-        backDiv.textContent = "Prêmio: +1 uma rodada "; //
+        backDiv.textContent = "Prêmio: 1 Energy Shot"; //
       } else if (result === defaultSettings.names[5]) {
-        backDiv.textContent = "Prêmio: 1 Voucher"; //
+        backDiv.textContent = "Prêmio: 1 Picolé"; //
       } else if (result === defaultSettings.names[6]) {
-        backDiv.textContent = "Prêmio: 1 Voucher"; //
+        backDiv.textContent = "Prêmio: Caprichoso 1 Brinde Exclusivo"; //
       } else if (result === defaultSettings.names[7]) {
-        backDiv.textContent = "1 Passeio Turístico"; //
+        backDiv.textContent = "Prêmio: Garantido 1 Brinde Exclusivo"; //
       } else if (result === defaultSettings.names[8]) {
-        backDiv.textContent = "Prêmio: R$0,01 na carteira"; //
+        backDiv.textContent = "Prêmio: 1 Brinde Exclusivo Crachá Pix"; //
+      } else if (result === defaultSettings.names[9]) {
+        backDiv.textContent = "Prêmio: 1 Brinde Exclusivo Canvi"; //
       }
 
       for (var i = 0; i < this.options.colNum; i++) {

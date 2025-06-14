@@ -109,20 +109,17 @@
 .bigwin:after {
   background-image: url("./bigwin.svg");
 }
-.trocados:after {
-  background-image: url("./trocados.svg");
-}
-.ancho:after {
-  /* background-image: url(//bannerflow.blob.core.windows.net/resources/seven-6803e6a7-66bb-475d-b201-e2551ac41f77.svg?v=636058905940602803); */
+.zaplus-azul:after {
   background-image: url(assets/ancho.png);
 }
-.hope:after {
-  /* background-image: url(//bannerflow.blob.core.windows.net/resources/lemon-427191a8-0a28-43fb-8bf9-6a68df0d8d0d.svg?v=636058905940602803); */
+.zaplus-vermelho:after {
   background-image: url(assets/hope.png);
 }
-/* .cherry:after     {background-image : url(//bannerflow.blob.core.windows.net/resources/cherry-73d79a68-bece-46b2-9f93-fcc4617b6dbc.svg?v=636058905940602803);} */
-.nilton:after {
+.santa-claudia:after {
   background-image: url(./niltoncorte.png);
+}
+.dr-guarana:after {
+  background-image: url("./assets/dr-guarana.svg");
 }
 .paraense:after {
   /* background-image: url(//bannerflow.blob.core.windows.net/resources/watermelon-53668bfb-8cd0-4107-b9be-b2379984b9fb.svg?v=636058905940602803); */
