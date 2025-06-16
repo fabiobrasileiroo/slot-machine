@@ -49,7 +49,7 @@ window.raf = (function () {
       height: "200",
       colNum: 3,
       rowNum: 9,
-      winRate: 100,//localStorage.getItem('porcetagem'),
+      winRate: 70,//localStorage.getItem('porcetagem'),
       autoPlay: false,
       autoSize: false,
       autoPlayTime: 10,
@@ -126,9 +126,9 @@ window.raf = (function () {
       } else if (result === defaultSettings.names[6]) {
         backDiv.textContent = "Prêmio: Garantido 1 Brinde Exclusivo"; //
       } else if (result === defaultSettings.names[7]) {
-        backDiv.textContent = "Prêmio: 1 Brinde Exclusivo Crachá Pix"; //
+        backDiv.textContent = "Prêmio: 1 Brinde Exclusivo"; //
       } else if (result === defaultSettings.names[8]) {
-        backDiv.textContent = "Prêmio: 1 Brinde Exclusivo Canvi"; //
+        backDiv.textContent = "Prêmio: 1 Brinde Exclusivo"; //
       }
 
       for (var i = 0; i < this.options.colNum; i++) {
