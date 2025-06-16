@@ -173,10 +173,13 @@ const gradientColors = [
     // Incrementa tentativa
     // this.showWin === true ? defaultSettings.tentativa++ : defaultSettings.tentativa;
     // if (ganhou) {
+    defaultSettings.tentativa++;
     // }
 
     // Atualiza o texto na tela
+    // document.getElementById("valor-tentativa").innerText = defaultSettings.tentativa + "/3";
 
+    console.log("click", defaultSettings.tentativa);
     // console.log("click", defaultSettings.);
 
     if (completed) {
@@ -220,6 +223,24 @@ const gradientColors = [
         // ganhou = true;
       }
 
+      if ( // confere se caiu em algum prêmio
+        defaultSettings.names.includes(result)
+      ) {
+        setTimeout(() => {
+          ganhou = true;
+        }, 7000); // 5 segundos
+      }
+      // Se ganhou → zerar tentativa
+      if (ganhou) {
+        defaultSettings.tentativa = 0;
+        document.getElementById("valor-tentativa").innerText = defaultSettings.tentativa + "/3";
+      }
+
+      // Se passou de 3 tentativas → zerar também
+      if (defaultSettings.tentativa >= 4) {
+        defaultSettings.tentativa = 0;
+        document.getElementById("valor-tentativa").innerText = defaultSettings.tentativa + "/3";
+      }
 
       for (var i = 0; i < this.options.colNum; i++) {
         this.colArr[i].beforeRun(result);
@@ -310,26 +331,24 @@ const gradientColors = [
       if (i > 0 && results[i] != results[i - 1]) {
         win = false;
 
+        document.getElementById("background-music-faild").play();
         var gameover = document.querySelector(".gameover");
-        document.getElementById("background-music-faild").play().then(() => {
-          // gameover.className = !firstRun ? "gameover" : "gameover active";
-        });
 
         // winner.className ="winner active";
-        // if (firstRun) {
-        //   console.log('desativo')
-        //   firstRun = false;
-        //   // return; // Sai da função sem executar o jogo
-        // }
+        gameover.className = !firstRun ? "gameover" : "gameover active";
+        if (firstRun) {
+          console.log('desativo')
+          firstRun = false;
+          // return; // Sai da função sem executar o jogo
+        }
 
 
 
         console.log('run? ', this.run)
         // Depois de 4 segundos, remove a classe 'active'
-        gameover.className = "gameover active";
         setTimeout(() => {
           gameover.className = "gameover";
-        }, 1500);
+        }, 1000);
         // modal close
         // const modalOverlay = document.getElementById("modalOverlay");
         // document.querySelector(".container").classList.toggle("z-index-zero");
@@ -442,11 +461,6 @@ const gradientColors = [
   // };
 
   SlotMachine.prototype.showWin = function (show) {
-    // var gameover = document.querySelector(".gameover")
-    // if(firstRun) {
-    //   gameover.className = "gameover"
-    //   firstRun = false
-    // }
     console.log(SlotMachine.prototype.showWin);
     console.log("🚀 ~ show:", show);
 

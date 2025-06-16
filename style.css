@@ -132,10 +132,10 @@
   background-image: url(./assets/game/coracao-vermelho.png);
 }
 .cracha-pix:after {
-  background-image: url(./assets/cracha-pix.png);
+  background-image: url(./assets/game/canvi.png);
 }
 .canvi:after {
-  background-image: url(./assets/game/canvi.png);
+  background-image: url(./assets/canvi.svg);
 }
 
 /*-------------=== winner style ===-------------*/
