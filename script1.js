@@ -1,3 +1,4 @@
+var firstRun = true;
 // var clickVezes = 0;
 // const apiUrl = 'https://node-api-videos-uka2.onrender.com/videos';
 // var porcetagemApi
@@ -56,7 +57,7 @@ const gradientColors = [
       height: "200",
       colNum: 3,
       rowNum: 9,
-      winRate: 60,//localStorage.getItem('porcetagem'),
+      winRate: 10,//localStorage.getItem('porcetagem'),
       autoPlay: false,
       autoSize: false,
       autoPlayTime: 100,
@@ -163,6 +164,11 @@ const gradientColors = [
   SlotMachine.prototype.beforeRun = function () {
     document.getElementById("background-music").play();
 
+    // if (firstRun) {
+    //   firstRun = false;
+    //   return; // Sai da função sem executar o jogo
+    // }
+
     // Incrementa tentativa
     // this.showWin === true ? defaultSettings.tentativa++ : defaultSettings.tentativa;
     // if (ganhou) {
@@ -231,8 +237,13 @@ const gradientColors = [
       for (var i = 0; i < this.options.colNum; i++) {
         this.colArr[i].beforeRun(result);
       }
-      this.rotateHandle();
-      this.run();
+      // if (firstRun) {
+      //   firstRun = false;
+      //   return; // Sai da função sem executar o jogo
+      // } else {
+        this.rotateHandle();
+        this.run();
+      // }
     }
 
     if (this.options.autoPlay)
@@ -316,15 +327,20 @@ const gradientColors = [
         var gameover = document.querySelector(".gameover");
 
         // winner.className ="winner active";
-        gameover.className = "gameover active";
+        gameover.className = !firstRun ? "gameover" : "gameover active";
+        if (firstRun) {
+          console.log('desativo')
+          firstRun = false;
+          // return; // Sai da função sem executar o jogo
+        }
 
 
-        
-        console.log('run? ',this.run )
-          // Depois de 4 segundos, remove a classe 'active'
-          setTimeout(() => {
-            gameover.className = "gameover";
-          }, 1000);
+
+        console.log('run? ', this.run)
+        // Depois de 4 segundos, remove a classe 'active'
+        setTimeout(() => {
+          gameover.className = "gameover";
+        }, 1000);
         // modal close
         // const modalOverlay = document.getElementById("modalOverlay");
         // document.querySelector(".container").classList.toggle("z-index-zero");
@@ -407,17 +423,17 @@ const gradientColors = [
     }
     if (!done) raf(this.run);
     else this.afterRun();
-    this.showGameOver()
+    // this.showGameOver()
   };
 
 
-// SlotMachine.prototype.showGameOver = function () {
-//   const gameover = document.querySelector(".gameover");
+  // SlotMachine.prototype.showGameOver = function () {
+  //   const gameover = document.querySelector(".gameover");
 
-//   if (gameover) {
-//     gameover.className = "gameover";
-//   }
-// };
+  //   if (gameover) {
+  //     gameover.className = "gameover";
+  //   }
+  // };
 
 
   // SlotMachine.prototype.showResult = function (isWin) {
@@ -694,6 +710,7 @@ const gradientColors = [
 (function () {
   var NAME = "SlotColumn";
   SlotColumn = function () {
+
     this.col = document.createElement("div");
     this.col.className = "col";
     this.init = this.init.bind(this);
@@ -725,6 +742,7 @@ const gradientColors = [
     this.nextResult = arguments[0];
     var next = this.arr.indexOf(this.nextResult);
     if (next == -1) next = random(0, this.arr.length - 1) | 0;
+
     var s =
       this.top +
       (random(2, 6) | 0) * this.colHeight +
