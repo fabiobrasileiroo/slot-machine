@@ -1,4 +1,5 @@
 var firstRun = true;
+var ganhou
 // var clickVezes = 0;
 // const apiUrl = 'https://node-api-videos-uka2.onrender.com/videos';
 // var porcetagemApi
@@ -57,7 +58,7 @@ const gradientColors = [
       height: "200",
       colNum: 3,
       rowNum: 9,
-      winRate: 10,//localStorage.getItem('porcetagem'),
+      winRate: 50,//localStorage.getItem('porcetagem'),
       autoPlay: false,
       autoSize: false,
       autoPlayTime: 100,
@@ -193,35 +194,42 @@ const gradientColors = [
       var backDiv = document.querySelector(".back");
 
       // Flag para saber se ganhou ou não
-      let ganhou = false;
+      ganhou = false;
       console.log(result)
       console.log(this.options)
       if (result === defaultSettings.names[0]) {
         backDiv.textContent = "Prêmio: 1 Pano Azul";
-        ganhou = true;
+        // ganhou = true;
       } else if (result === defaultSettings.names[1]) {
         backDiv.textContent = "Prêmio: 1 Pano Vermelho";
-        ganhou = true;
+        // ganhou = true;
       } else if (result === defaultSettings.names[2]) {
         backDiv.textContent = "Prêmio: 1 Refrigerante";
-        ganhou = true;
+        // ganhou = true;
       } else if (result === defaultSettings.names[3]) {
         backDiv.textContent = "Prêmio: 1 Energy Shot";
-        ganhou = true;
+        // ganhou = true;
       } else if (result === defaultSettings.names[4]) {
         backDiv.textContent = "Prêmio: 1 Picolé";
-        ganhou = true;
+        // ganhou = true;
       } else if (result === defaultSettings.names[5]) {
         backDiv.textContent = "Prêmio: Caprichoso 1 Brinde Exclusivo";
-        ganhou = true;
+        // ganhou = true;
       } else if (result === defaultSettings.names[6]) {
         backDiv.textContent = "Prêmio: Garantido 1 Brinde Exclusivo";
-        ganhou = true;
+        // ganhou = true;
       } else if (result === defaultSettings.names[7] || result === defaultSettings.names[8]) {
         backDiv.textContent = "Prêmio: 1 Brinde Exclusivo";
-        ganhou = true;
+        // ganhou = true;
       }
 
+      if ( // confere se caiu em algum prêmio
+        defaultSettings.names.includes(result)
+      ) {
+        setTimeout(() => {
+          ganhou = true;
+        }, 7000); // 5 segundos
+      }
       // Se ganhou → zerar tentativa
       if (ganhou) {
         defaultSettings.tentativa = 0;
@@ -241,8 +249,8 @@ const gradientColors = [
       //   firstRun = false;
       //   return; // Sai da função sem executar o jogo
       // } else {
-        this.rotateHandle();
-        this.run();
+      this.rotateHandle();
+      this.run();
       // }
     }
 
