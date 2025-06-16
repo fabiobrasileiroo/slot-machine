@@ -56,7 +56,7 @@ const gradientColors = [
       height: "200",
       colNum: 3,
       rowNum: 9,
-      winRate: 60,//localStorage.getItem('porcetagem'),
+      winRate: 10,//localStorage.getItem('porcetagem'),
       autoPlay: false,
       autoSize: false,
       autoPlayTime: 100,
@@ -407,7 +407,7 @@ const gradientColors = [
     }
     if (!done) raf(this.run);
     else this.afterRun();
-    // this.showGameOver()
+    this.showGameOver()
   };
 
 
