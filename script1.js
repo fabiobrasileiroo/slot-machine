@@ -41,6 +41,13 @@ window.raf = (function () {
 // .then(post => {
 // console.log(post.duration);
 // });
+const gradientColors = [
+  { offset: '0%', color: 'rgba(149, 21, 27, 1)' },
+  { offset: '25%', color: 'rgba(248, 20, 32, 1)' },
+  { offset: '79%', color: 'rgba(40, 0, 191, 1)' },
+  { offset: '98%', color: 'rgba(40, 0, 85, 1)' }
+];
+
 
 (function () {
   var NAME = "SlotMachine",
@@ -58,6 +65,7 @@ window.raf = (function () {
       handleWidth: 35,
       handleHeight: 30,
       machineBorder: 15,
+      tentativa: 0,
       // machineColor    : 'rgba(120,60,30,1)',
       machineColor: "rgba(255,255,255,1)",
       names: [
@@ -89,62 +97,148 @@ window.raf = (function () {
     this.options = {};
     // this.resultadoShowWin = this.
   };
-  SlotMachine.prototype.beforeRun = function () {
-    document.getElementById("background-music").play();
-    // clickVezes++;
-    // console.log("click", clickVezes);
-    // console.log("win", defaultSettings.winRate);
-    // clickVezes % 2 === 0
-    //   ? (defaultSettings.winRate = 100)
-    //   : (defaultSettings.winRate = 4);
-    if (completed) {
-      this.showWin(false);
-      completed = false;
-      var result = null;
-      console.log(this.options.winRate)
-      result =
-        this.options.names[
-        random((this.options.rowNum * 100) / this.options.winRate) | 0
-        ]; //set winrate
-      // console.log(result);
-      // globalResult = result;
-      // resultadoShowWin(result);
-      var backDiv = document.querySelector(".back");
-      // Altere o conteúdo da div para o valor desejado
-      if (result === defaultSettings.names[0]) {
-        backDiv.textContent = "Prêmio: 1 Pano Azul";
-      } else if (result === defaultSettings.names[1]) {
-        backDiv.textContent = "Prêmio: 1 Pano Vermelho"; //
-      } else if (result === defaultSettings.names[2]) {
-        backDiv.textContent = "Prêmio: 1 Refrigerante"; //
-      } else if (result === defaultSettings.names[3]) {
-        backDiv.textContent = "Prêmio: 1 Energy Shot"; //
-      } else if (result === defaultSettings.names[4]) {
-        backDiv.textContent = "Prêmio: 1 Picolé"; //
-      } else if (result === defaultSettings.names[5]) {
-        backDiv.textContent = "Prêmio: Caprichoso 1 Brinde Exclusivo"; //
-      } else if (result === defaultSettings.names[6]) {
-        backDiv.textContent = "Prêmio: Garantido 1 Brinde Exclusivo"; //
-      } else if (result === defaultSettings.names[7]) {
-        backDiv.textContent = "Prêmio: 1 Brinde Exclusivo"; //
-      } else if (result === defaultSettings.names[8]) {
-        backDiv.textContent = "Prêmio: 1 Brinde Exclusivo"; //
-      }
+  // SlotMachine.prototype.beforeRun = function () {
+  //   document.getElementById("background-music").play();
+  //   defaultSettings.tentativa++;
+  //   document.getElementById("valor-tentativa").innerText =  defaultSettings.tentativa + "/3";
 
-      for (var i = 0; i < this.options.colNum; i++) {
-        this.colArr[i].beforeRun(result);
-      }
-      this.rotateHandle();
-      this.run();
+  //   // tentativa.value = defaultSettings.tentativa
+
+  //   console.log("click", defaultSettings.tentativa);
+  //   // console.log("win", defaultSettings.winRate);
+  //   // clickVezes % 2 === 0
+  //   //   ? (defaultSettings.winRate = 100)
+  //   //   : (defaultSettings.winRate = 4);
+  //   if (completed) {
+  //     this.showWin(false);
+  //     completed = false;
+  //     var result = null;
+  //     console.log(this.options.winRate)
+  //     console.log(this.result)
+  //     result =
+  //       this.options.names[
+  //       random((this.options.rowNum * 100) / this.options.winRate) | 0
+  //       ]; //set winrate
+  //     // console.log(result);
+  //     // globalResult = result;
+  //     // resultadoShowWin(result);
+  //     var backDiv = document.querySelector(".back");
+  //     // Altere o conteúdo da div para o valor desejado
+  //     if (result === defaultSettings.names[0]) {
+  //       backDiv.textContent = "Prêmio: 1 Pano Azul";
+  //     } else if (result === defaultSettings.names[1]) {
+  //       backDiv.textContent = "Prêmio: 1 Pano Vermelho"; //
+  //     } else if (result === defaultSettings.names[2]) {
+  //       backDiv.textContent = "Prêmio: 1 Refrigerante"; //
+  //     } else if (result === defaultSettings.names[3]) {
+  //       backDiv.textContent = "Prêmio: 1 Energy Shot"; //
+  //     } else if (result === defaultSettings.names[4]) {
+  //       backDiv.textContent = "Prêmio: 1 Picolé"; //
+  //     } else if (result === defaultSettings.names[5]) {
+  //       backDiv.textContent = "Prêmio: Caprichoso 1 Brinde Exclusivo"; //
+  //     } else if (result === defaultSettings.names[6]) {
+  //       backDiv.textContent = "Prêmio: Garantido 1 Brinde Exclusivo"; //
+  //     } else if (result === defaultSettings.names[7]) {
+  //       backDiv.textContent = "Prêmio: 1 Brinde Exclusivo"; //
+  //     } else if (result === defaultSettings.names[8]) {
+  //       backDiv.textContent = "Prêmio: 1 Brinde Exclusivo"; //
+  //     }
+
+  //     for (var i = 0; i < this.options.colNum; i++) {
+  //       this.colArr[i].beforeRun(result);
+  //     }
+  //     this.rotateHandle();
+  //     this.run();
+  //   }
+  //   if (this.options.autoPlay)
+  //     nextLoop = setTimeout(
+  //       function () {
+  //         this.beforeRun();
+  //       }.bind(this),
+  //       this.options.autoPlayTime * 1000
+  //     );
+  // };
+  SlotMachine.prototype.beforeRun = function () {
+  document.getElementById("background-music").play();
+
+  // Incrementa tentativa
+  defaultSettings.tentativa++;
+
+  // Atualiza o texto na tela
+  document.getElementById("valor-tentativa").innerText = defaultSettings.tentativa + "/3";
+
+  console.log("click", defaultSettings.tentativa);
+  // console.log("click", defaultSettings.);
+
+  if (completed) {
+    this.showWin(false);
+    completed = false;
+    var result = null;
+
+    result = this.options.names[
+      random((this.options.rowNum * 100) / this.options.winRate) | 0
+    ]; // Definindo o resultado com base no winRate
+
+    var backDiv = document.querySelector(".back");
+
+    // Flag para saber se ganhou ou não
+    let ganhou = false;
+    console.log(result)
+    console.log(this.options)
+    if (result === defaultSettings.names[0]) {
+      backDiv.textContent = "Prêmio: 1 Pano Azul";
+      ganhou = true;
+    } else if (result === defaultSettings.names[1]) {
+      backDiv.textContent = "Prêmio: 1 Pano Vermelho";
+      ganhou = true;
+    } else if (result === defaultSettings.names[2]) {
+      backDiv.textContent = "Prêmio: 1 Refrigerante";
+      ganhou = true;
+    } else if (result === defaultSettings.names[3]) {
+      backDiv.textContent = "Prêmio: 1 Energy Shot";
+      ganhou = true;
+    } else if (result === defaultSettings.names[4]) {
+      backDiv.textContent = "Prêmio: 1 Picolé";
+      ganhou = true;
+    } else if (result === defaultSettings.names[5]) {
+      backDiv.textContent = "Prêmio: Caprichoso 1 Brinde Exclusivo";
+      ganhou = true;
+    } else if (result === defaultSettings.names[6]) {
+      backDiv.textContent = "Prêmio: Garantido 1 Brinde Exclusivo";
+      ganhou = true;
+    } else if (result === defaultSettings.names[7] || result === defaultSettings.names[8]) {
+      backDiv.textContent = "Prêmio: 1 Brinde Exclusivo";
+      ganhou = true;
     }
-    if (this.options.autoPlay)
-      nextLoop = setTimeout(
-        function () {
-          this.beforeRun();
-        }.bind(this),
-        this.options.autoPlayTime * 1000
-      );
-  };
+
+    // Se ganhou → zerar tentativa
+    if (ganhou) {
+      defaultSettings.tentativa = 0;
+      document.getElementById("valor-tentativa").innerText = defaultSettings.tentativa + "/3";
+    }
+
+    // Se passou de 3 tentativas → zerar também
+    if (defaultSettings.tentativa >= 4) {
+      defaultSettings.tentativa = 0;
+      document.getElementById("valor-tentativa").innerText = defaultSettings.tentativa + "/3";
+    }
+
+    for (var i = 0; i < this.options.colNum; i++) {
+      this.colArr[i].beforeRun(result);
+    }
+    this.rotateHandle();
+    this.run();
+  }
+
+  if (this.options.autoPlay)
+    nextLoop = setTimeout(
+      function () {
+        this.beforeRun();
+      }.bind(this),
+      this.options.autoPlayTime * 1000
+    );
+};
+
   // SlotMachine.prototype.afterRun = function () {
   //   document.getElementById("background-music").pause();
   //   completed = true;

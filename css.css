@@ -351,3 +351,17 @@ h1.main, p.demos {
 		transform: scale(1) rotate(0deg);
 	}
 }
+
+.badge {
+  position: absolute;
+  top: 210px;  /* ajusta a posição acima do caça-níquel */
+  left: 745px;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 5px 15px;
+  border-radius: 20px;
+  color: #000;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
