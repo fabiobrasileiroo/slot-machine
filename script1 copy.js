@@ -114,20 +114,22 @@ window.raf = (function () {
       if (result === defaultSettings.names[0]) {
         backDiv.textContent = "Prêmio: 1 Pano Azul";
       } else if (result === defaultSettings.names[1]) {
-        backDiv.textContent = "Prêmio: 1 Pano Vermelho"; //
+        backDiv.textContent = "Prêmio: Passaporte"; //
       } else if (result === defaultSettings.names[2]) {
-        backDiv.textContent = "Prêmio: 1 Refrigerante"; //
+        backDiv.textContent = "Prêmio: 1 Pano Vermelho"; //
       } else if (result === defaultSettings.names[3]) {
-        backDiv.textContent = "Prêmio: 1 Energy Shot"; //
+        backDiv.textContent = "Prêmio: 1 Refrigerante"; //
       } else if (result === defaultSettings.names[4]) {
-        backDiv.textContent = "Prêmio: 1 Picolé"; //
+        backDiv.textContent = "Prêmio: 1 Energy Shot"; //
       } else if (result === defaultSettings.names[5]) {
-        backDiv.textContent = "Prêmio: Caprichoso 1 Brinde Exclusivo"; //
+        backDiv.textContent = "Prêmio: 1 Picolé"; //
       } else if (result === defaultSettings.names[6]) {
-        backDiv.textContent = "Prêmio: Garantido 1 Brinde Exclusivo"; //
+        backDiv.textContent = "Prêmio: Caprichoso 1 Brinde Exclusivo"; //
       } else if (result === defaultSettings.names[7]) {
-        backDiv.textContent = "Prêmio: 1 Brinde Exclusivo Crachá Pix"; //
+        backDiv.textContent = "Prêmio: Garantido 1 Brinde Exclusivo"; //
       } else if (result === defaultSettings.names[8]) {
+        backDiv.textContent = "Prêmio: 1 Brinde Exclusivo Crachá Pix"; //
+      } else if (result === defaultSettings.names[9]) {
         backDiv.textContent = "Prêmio: 1 Brinde Exclusivo Canvi"; //
       }
 
@@ -567,7 +569,7 @@ window.raf = (function () {
       (random(2, 55) | 0) * this.colHeight +
       (((next + 0.5) * this.rowHeight) | 0) -
       this.halfHeight;
-    var n = (random(2, 10) | 0) * fps;
+    var n = (random(2, 18) | 0) * fps;
     this.speed = (2 * s) / (n + 1);
     this.acceleration = this.speed / n;
   };
