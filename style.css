@@ -126,16 +126,16 @@
 }
 
 .caprichoso-azul:after {
-  background-image: url(./assets/caprichoso-azul1.png);
+  background-image: url(./assets/game/estrela-azul.png);
 }
 .garantido-vermelho:after {
-  background-image: url(./assets/garantido-vermelho.png);
+  background-image: url(./assets/game/coracao-vermelho.png);
 }
 .cracha-pix:after {
   background-image: url(./assets/cracha-pix.png);
 }
 .canvi:after {
-  background-image: url(./assets/canvi.svg);
+  background-image: url(./assets/game/canvi.png);
 }
 
 /*-------------=== winner style ===-------------*/
@@ -192,6 +192,112 @@
 .winner:after {
   /* background: url(//bannerflow.blob.core.windows.net/resources/winner1-e3971196-c01b-4985-8303-3a1829f2d529.svg?v=636058905940602803) */
   background: url(assets/vc-ganhou.png)
+    no-repeat center;
+  background-size: 50% 50%;
+  -webkit-animation: scaleForeground 2s linear infinite;
+  -moz-animation: scaleForeground 2s linear infinite;
+  -o-animation: scaleForeground 2s linear infinite;
+  animation: scaleForeground 2s linear infinite;
+}
+
+/* game over */
+/* .gameover {
+  background-color: transparent;
+  -webkit-transition: transform 0.1s linear, background-color 0.1s ease;
+  -moz-transition: transform 0.1s linear, background-color 0.1s ease;
+  -o-transition: transform 0.1s linear, background-color 0.1s ease;
+  transition: transform 0.1s linear, background-color 0.1s ease;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  pointer-events: none;
+}
+.gameover.active {
+  -webkit-transition: transform 0.1s linear, background-color 0.5s ease;
+  -moz-transition: transform 0.1s linear, background-color 0.5s ease;
+  -o-transition: transform 0.1s linear, background-color 0.5s ease;
+  transition: transform 0.1s linear, background-color 0.5s ease;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+.gameover,
+.gameover:before,
+.gameover:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  display: block;
+  z-index: 3;
+}
+.gameover:before,
+.gameover:after {
+  width: 100vw;
+  height: 100vw;
+  top: -25vw;
+} */
+ .gameover {
+  background-color: transparent;
+  -webkit-transition: transform 0.1s linear, background-color 0.1s ease;
+  -moz-transition: transform 0.1s linear, background-color 0.1s ease;
+  -o-transition: transform 0.1s linear, background-color 0.1s ease;
+  transition: transform 0.1s linear, background-color 0.1s ease;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  pointer-events: none;
+}
+.gameover.active {
+  -webkit-transition: transform 0.1s linear, background-color 0.5s ease;
+  -moz-transition: transform 0.1s linear, background-color 0.5s ease;
+  -o-transition: transform 0.1s linear, background-color 0.5s ease;
+  transition: transform 0.1s linear, background-color 0.5s ease;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+
+.gameover,
+.gameover:before,
+.gameover:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  display: block;
+  z-index: 3;
+}
+.gameover:before,
+.gameover:after {
+  width: 100vw;
+  height: 100vw;
+  top: -25vw;
+}
+/* 
+.gameover:before {
+  background: url(//bannerflow.blob.core.windows.net/resources/winner2-d4e9ae90-43f8-4575-99b9-fc675462bc35.svg?v=636058905940602803)
+    no-repeat center;
+  background-size: cover;
+  -webkit-animation: rotateBackground 12s linear infinite;
+  -moz-animation: rotateBackground 12s linear infinite;
+  -o-animation: rotateBackground 12s linear infinite;
+  animation: rotateBackground 12s linear infinite;
+} */
+
+.gameover:after {
+  /* background: url(//bannerflow.blob.core.windows.net/resources/winner1-e3971196-c01b-4985-8303-3a1829f2d529.svg?v=636058905940602803) */
+  background: url(assets/game/n-foi-dessa-vez.svg)
     no-repeat center;
   background-size: 50% 50%;
   -webkit-animation: scaleForeground 2s linear infinite;

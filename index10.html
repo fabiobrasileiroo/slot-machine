@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvi | caça níquel</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    .machine {
+      margin-top: 180px !important;
+      display: inline-block;
+      position: relative;
+      margin: auto;
+      opacity: 0;
+    }
+    .container {
+      width: 1200px;
+      height: 400px;
+      border-style: solid;
+      border-color: hsl(0, 10%, 50%) hsl(0, 20%, 50%) hsl(0, 10%, 50%) hsl(0, 20%, 50%);
+      border-width: 15px;
+      display: flex;
+      margin: auto;
+      background: linear-gradient(
+        to bottom,
+        #696992 0%,
+        #afb0b7 20%,
+        #e9e9e9 35%,
+        #8f9e90 69%,
+        #e7e7e7 100%
+      );
+      box-shadow: inset 0 0 50px #000000;
+      position: relative;
+      overflow: hidden;
+      float: left;
+      background-clip: content-box;
+    }
+
+    .container:before {
+      content: "";
+      position: absolute;
+      width: calc(100% - 40px);
+      top: calc(50% - 20px);
+      left: 0;
+      border-style: solid;
+      border-width: 20px 20px;
+      border-color: transparent hsla(0, 70%, 50%, 0.75) transparent hsla(0, 70%, 50%, 0.75);
+      height: 2px;
+      background-color: rgba(250, 250, 250, 0.5);
+      overflow: hidden;
+      z-index: 1;
+      background-clip: content-box;
+    }
+    .container.z-index-zero:before {
+        z-index: 0;
+    }
+    .container:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0) 20%,
+        rgba(0, 0, 0, 0) 80%,
+        rgba(0, 0, 0, 0.8) 100%
+      );
+    }
+    .col {
+      width: 100%;
+    }
+    .row {
+      border-style: solid;
+      border-color: #eee;
+      border-width: 2px;
+    }
+    .row:after {
+      content: "";
+      display: block;
+      padding-top: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .zaplus-azul:after {
+      background-image: url(assets/zaplus-azul.svg);
+    }
+    .zaplus-vermelho:after {
+      background-image: url(assets/zaplus-vermelho.svg);
+    }
+    .santa-claudia:after {
+      background-image: url(./assets/santa-claudia.png);
+    }
+    .dr-guarana:after {
+      background-image: url("./assets/dr-guarana.svg");
+    }
+    .caboclo-picole:after {
+      background-image: url(assets/caboclo-picole.svg);
+    }
+    .caprichoso-azul:after {
+      background-image: url(./assets/caprichoso-azul1.png);
+    }
+    .garantido-vermelho:after {
+      background-image: url(./assets/garantido-vermelho.png);
+    }
+    .cracha-pix:after {
+      background-image: url(./assets/cracha-pix.png);
+    }
+    .canvi:after {
+      background-image: url(./assets/canvi.svg);
+    }
+
+    /*-------------=== winner style ===-------------*/
+    .winner {
+      background-color: transparent;
+      transition: transform 0.1s linear, background-color 0.1s ease;
+      transform: scale(0);
+      pointer-events: none;
+    }
+    .winner.active {
+      transition: transform 0.1s linear, background-color 0.5s ease;
+      background-color: rgba(0, 0, 0, 0.5);
+      transform: scale(1);
+    }
+    .winner,
+    .winner:before,
+    .winner:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: "";
+      display: block;
+      z-index: 3;
+    }
+    .winner:before,
+    .winner:after {
+      width: 100vw;
+      height: 100vw;
+      top: -25vw;
+    }
+    .winner:before {
+      background: url(//bannerflow.blob.core.windows.net/resources/winner2-d4e9ae90-43f8-4575-99b9-fc675462bc35.svg?v=636058905940602803)
+        no-repeat center;
+      background-size: cover;
+      animation: rotateBackground 12s linear infinite;
+    }
+    .winner:after {
+      background: url(assets/vc-ganhou.png) no-repeat center;
+      background-size: 50% 50%;
+      animation: scaleForeground 2s linear infinite;
+    }
+
+    /*-------------=== game over style ===-------------*/
+    .gameover {
+      background-color: transparent;
+      transition: transform 0.1s linear, background-color 0.1s ease;
+      transform: scale(0);
+      pointer-events: none;
+    }
+    .gameover.active {
+      transition: transform 0.1s linear, background-color 0.5s ease;
+      background-color: rgba(0, 0, 0, 0.5);
+      transform: scale(1);
+    }
+    .gameover,
+    .gameover:before,
+    .gameover:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: "";
+      display: block;
+      z-index: 3;
+    }
+    .gameover:before,
+    .gameover:after {
+      width: 100vw;
+      height: 100vw;
+      top: -25vw;
+    }
+    .gameover:before {
+      background: url(//bannerflow.blob.core.windows.net/resources/winner2-d4e9ae90-43f8-4575-99b9-fc675462bc35.svg?v=636058905940602803)
+        no-repeat center;
+      background-size: cover;
+      animation: rotateBackground 12s linear infinite;
+    }
+    .gameover:after {
+      background: url(./assets/game/n-foi-dessa-vez.svg) no-repeat center;
+      background-size: 50% 50%;
+      animation: scaleForeground 2s linear infinite;
+    }
+    
+    @keyframes rotateBackground {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes scaleForeground {
+      50% {
+        transform: scale(0.5);
+      }
+    }
+    
+    /* Handle styles */
+    .handle {
+      position: relative;
+      float: left;
+      vertical-align: top;
+      height: 60px;
+      margin-top: 70px;
+      width: 15px;
+      border-radius: 0 5px 5px 0/20px;
+      border: 1px solid rgba(189, 160, 112, 0.5);
+      background: linear-gradient(
+        to bottom,
+        #cd9819 0%,
+        #f5f5f5 20%,
+        #e2ba78 67%,
+        #b6783d 90%,
+        #cd9819 100%
+      );
+      transition: all 0.2s linear;
+      cursor: pointer;
+    }
+    .handle:before,
+    .handle:after {
+      content: "";
+      display: block;
+      position: absolute;
+      transition: all 0.2s linear;
+    }
+    .handle:before {
+      border-style: solid;
+      border-width: 1px;
+      border-color: rgba(163, 126, 67, 0.1);
+      background: linear-gradient(
+        to right,
+        #f5d6b1 0%,
+        #cc9310 20%,
+        #f1e767 60%,
+        #f5f5f5 90%,
+        #f1e767 100%
+      );
+      width: 8px;
+      height: 80px;
+      bottom: 30px;
+      right: -10px;
+      border-bottom-right-radius: 10px 8px;
+    }
+    .handle:after {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      top: -64px;
+      right: -17px;
+      border: 1px solid rgba(204, 147, 16, 0.3);
+      background: radial-gradient(
+        ellipse at 75% 25%,
+        #ffffff 0%,
+        #f1e767 25%,
+        #cc9310 60%,
+        #feb645 91%
+      );
+    }
+    .handle.active {
+      background-position: 0 47px;
+    }
+    .handle.active:before {
+      height: 0px;
+      border-bottom-right-radius: 2px;
+      transform: translateY(5px);
+    }
+    .handle.active:after {
+      transform: translateY(85px);
+    }
+    
+    /* Card flip styles */
+    .container1 {
+      margin-top: 1rem !important;
+      margin-top: 100px;
+      margin-right: calc(50% - 235px);
+      margin-left: auto;
+      width: 510px;
+      height: 140px;
+      position: relative;
+      perspective: 800px;
+      border-radius: 4px;
+    }
+    .card {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border-radius: 6px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+    }
+    .card div {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 6px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font: 16px/1.5;
+      font-smoothing: antialiased;
+      color: #000;
+    }
+    .back {
+      transform: rotateY(180deg);
+    }
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
+    .card.flipped1 {
+      transform: rotateY(0deg);
+    }
+    
+    /* Modal styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal {
+      background-color: #ffffffb6;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 90%;
+      width: 400px;
+    }
+    .modal h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .modal p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .btn-close {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+    .btn-close:hover {
+      background-color: #2980b9;
+    }
+    .btn.play {
+      position: relative;
+      width: 120px;
+      height: 50px;
+      border: none;
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      cursor: pointer;
+      letter-spacing: 2px;
+      font-weight: 900;
+      background: none;
+      color: #fff;
+      align-self: center;
+      margin-top: -10px;
+      transition: all 400ms cubic-bezier(0.8, 0, 0.33, 1);
+      overflow: hidden;
+    }
+    .btn.play::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 0%;
+      left: 0;
+      bottom: 0;
+      border-radius: 50% 50% 0 0;
+      background: #fff;
+      transition: all 400ms cubic-bezier(0.8, 0, 0.33, 1);
+      z-index: -1;
+    }
+    .btn.play::after {
+      content: "PLAY";
+      position: absolute;
+      height: 180%;
+      right: 0;
+      top: 0;
+      color: #000;
+      transform: translateY(-100%);
+      font-size: 1.4em;
+      transition: all 400ms cubic-bezier(0.8, 0, 0.33, 1);
+    }
+    .btn.play:hover::after {
+      transform: translate(-50%, 15%);
+    }
+    .btn.play:hover::before {
+      height: 180%;
+    }
+    .btn.play:focus {
+      transform: scale(0.9);
+      outline: none;
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 1440px) {
+      .container {
+        width: 900px;
+        height: 300px;
+      }
+    }
+    @media (max-width: 1024px) {
+      .container {
+        width: 700px;
+        height: 250px;
+      }
+    }
+    @media (max-width: 768px) {
+      .container {
+        width: 500px;
+        height: 200px;
+      }
+      .container1 {
+        width: 400px;
+      }
+    }
+    @media (max-width: 480px) {
+      .container {
+        width: 300px;
+        height: 150px;
+      }
+      .container1 {
+        width: 280px;
+        height: 100px;
+      }
+      .card div {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sp-container">
+    <div class="sp-content">
+      <div class="cassino-img">
+        <img src="./assets/caca-niquel.svg" style="margin-top: 30px;" width="300" alt="">
+        <div class="badge" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+          <span>Tentativa: <strong style="font-weight: 800; font-size: 1.02rem;" id="valor-tentativa">0/3</strong></span>
+        </div>
+      </div>
+    </div>
+    <div class="machine" style="margin-top: 150px !important;">
+      <div class="container">
+        <div class="winner"></div>
+        <div class="gameover"></div>
+      </div>
+      <div class="handle"></div>
+    </div>
+    <div class="container1">
+      <div class="card" style="font-size: 20px !important;">
+        <div class="front" style="font-size: 70px !important; padding-top: 14px !important ;">Prepare-se</div>
+        <div class="back" style="font-size: 38px !important;text-align: center !important;padding-top:10px !important;line-height:1.35em !important">
+          premio
+        </div>
+      </div>
+    </div>
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal" id="modalContent">
+        <p>Você perdeu tente novamente</p>
+        <button class="btn-close" id="closeModal">Close</button>
+        <button class="btn play">PLAY</button>
+      </div>
+    </div>
+    <div class="cassino-img">
+      <img src="./assets/game/premios.png" style="margin-top: 50px;" width="550" alt="">
+    </div>
+    <audio id="background-music" loop>
+      <source src="Jackpot Slot Machine Sounds Effect Casino (mp3cut.net).mp3" type="audio/mpeg">
+    </audio>
+    <audio id="background-music-winner">
+      <source src="./assets/game-win-2016.wav" type="audio/wav">
+    </audio>
+    <audio id="background-music-faild">
+      <source src="game-over-arcade-6435.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <script>
+    // Configurações iniciais
+    const defaultSettings = {
+      width: "200",
+      height: "200",
+      colNum: 3,
+      rowNum: 9,
+      winRate: 1,
+      autoPlay: false,
+      autoPlayTime: 10,
+      layout: "compact",
+      handleShow: true,
+      handleWidth: 35,
+      handleHeight: 30,
+      machineBorder: 15,
+      tentativa: 0,
+      machineColor: "rgba(255,255,255,1)",
+      names: [
+        "zaplus-azul",
+        "zaplus-vermelho",
+        "santa-claudia",
+        "dr-guarana",
+        "caboclo-picole",
+        "caprichoso-azul",
+        "garantido-vermelho",
+        "cracha-pix",
+        "canvi",
+      ],
+    };
+
+    let completed = true;
+    let isShuffle = true;
+    let widget = null;
+    const fps = 60;
+
+    // Polyfills e utilitários
+    if (!String.prototype.strip) {
+      String.prototype.strip = function () {
+        return this.replace(/(<[^>]+>)/gi, " ").trim();
+      };
+    }
+    
+    if (!Node.prototype.empty) {
+      Node.prototype.empty = function () {
+        while (this.firstChild) {
+          this.removeChild(this.firstChild);
+        }
+      };
+    }
+    
+    if (!HTMLElement.prototype.hasClass) {
+      HTMLElement.prototype.hasClass = function (c) {
+        return (" " + this.className + " ").replace(/[\n\t]/g, " ").indexOf(" " + c + " ") > -1;
+      };
+    }
+    
+    if (!HTMLElement.prototype.addClass) {
+      HTMLElement.prototype.addClass = function (c) {
+        if (!this.hasClass(c)) this.className += " " + c;
+        return this;
+      };
+    }
+    
+    if (!HTMLElement.prototype.removeClass) {
+      HTMLElement.prototype.removeClass = function (c) {
+        if (this.hasClass(c)) {
+          this.className = (" " + this.className + " ").replace(" " + c + " ", " ").trim();
+        }
+        return this;
+      };
+    }
+    
+    const random = function () {
+      const isNumeric = n => !isNaN(parseFloat(n)) && isFinite(n);
+      const val = Math.random();
+      const arg = arguments;
+      return isNumeric(arg[0])
+        ? isNumeric(arg[1])
+          ? arg[0] + val * (arg[1] - arg[0])
+          : val * arg[0]
+        : val;
+    };
+    
+    const shuffle = function (arr) {
+      let j, tmp;
+      for (let i = 0; i < arr.length; i++) {
+        j = random(arr.length) | 0;
+        tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+      }
+    };
+    
+    const getStyle = function (selector, styleObj) {
+      let isAttribute = false;
+      let newStyle = selector + "{";
+      for (const attr in styleObj) {
+        if (styleObj[attr]) {
+          isAttribute = true;
+          newStyle += attr + " : " + styleObj[attr] + ";";
+        }
+      }
+      newStyle += "}";
+      return isAttribute ? newStyle : "";
+    };
+    
+    const getLighter = function (rgba) {
+      const o = /[^,]+(?=\))/g.exec(rgba)[0] * 0.75;
+      return rgba.replace(/[^,]+(?=\))/g, o);
+    };
+    
+    window.raf = (function () {
+      return (
+        requestAnimationFrame ||
+        webkitRequestAnimationFrame ||
+        mozRequestAnimationFrame ||
+        function (c) {
+          setTimeout(c, 1000 / fps);
+        }
+      );
+    })();
+
+    // SlotColumn
+    function SlotColumn() {
+      this.col = document.createElement("div");
+      this.col.className = "col";
+      this.init = this.init.bind(this);
+      this.run = this.run.bind(this);
+      this.beforeRun = this.beforeRun.bind(this);
+      this.getResult = this.getResult.bind(this);
+      this.getDOM = this.getDOM.bind(this);
+      this.arr = [];
+      this.colHeight = this.rowHeight = 0;
+      this.loop = 2;
+    }
+    
+    SlotColumn.prototype.init = function () {
+      this.col.empty();
+      this.arr = arguments[0];
+      const isShuffle = arguments[1];
+      if (isShuffle) shuffle(this.arr);
+      for (let i = 0; i < this.arr.length * this.loop; i++) {
+        const row = document.createElement("div");
+        row.className = "row " + this.arr[i % this.arr.length];
+        this.col.appendChild(row);
+      }
+      this.top = 0;
+    };
+    
+    SlotColumn.prototype.beforeRun = function () {
+      this.halfHeight = this.col.offsetHeight / this.loop;
+      this.colHeight = this.col.scrollHeight / 2;
+      this.rowHeight = this.colHeight / this.arr.length;
+      this.nextResult = arguments[0];
+      let next = this.arr.indexOf(this.nextResult);
+      if (next === -1) next = random(0, this.arr.length - 1) | 0;
+      const s =
+        this.top +
+        (random(2, 6) | 0) * this.colHeight +
+        (((next + 0.5) * this.rowHeight) | 0) -
+        this.halfHeight;
+      const n = (random(2, 7) | 0) * fps;
+      this.speed = (2 * s) / (n + 1);
+      this.acceleration = this.speed / n;
+    };
+    
+    SlotColumn.prototype.getResult = function () {
+      const result =
+        Math.ceil(((this.halfHeight - this.top) % this.colHeight) / this.rowHeight) - 1;
+      return this.arr[result];
+    };
+    
+    SlotColumn.prototype.run = function () {
+      if (this.speed <= 0) return true;
+      this.top = (this.top - this.speed) % this.colHeight;
+      this.speed -= this.acceleration;
+      this.top %= this.colHeight;
+      this.col.style.transform = "translateY(" + this.top + "px)";
+      return false;
+    };
+    
+    SlotColumn.prototype.getDOM = function () {
+      return this.col;
+    };
+
+    // SlotMachine
+    function SlotMachine() {
+      this.init = this.init.bind(this);
+      this.run = this.run.bind(this);
+      this.addListener = this.addListener.bind(this);
+      this.beforeRun = this.beforeRun.bind(this);
+      this.afterRun = this.afterRun.bind(this);
+      this.showResult = this.showResult.bind(this);
+      this.rotateHandle = this.rotateHandle.bind(this);
+      this.colArr = [];
+      this.options = {};
+    }
+    
+    SlotMachine.prototype.beforeRun = function () {
+      document.getElementById("background-music").play();
+      defaultSettings.tentativa++;
+      document.getElementById("valor-tentativa").innerText = defaultSettings.tentativa + "/3";
+      
+      if (completed) {
+        this.showResult(false);
+        completed = false;
+        let result = null;
+        result = this.options.names[random((this.options.rowNum * 100) / this.options.winRate) | 0];
+        
+        const backDiv = document.querySelector(".back");
+        let ganhou = false;
+        
+        if (result === defaultSettings.names[0]) {
+          backDiv.textContent = "Prêmio: 1 Pano Azul";
+          ganhou = true;
+        } else if (result === defaultSettings.names[1]) {
+          backDiv.textContent = "Prêmio: 1 Pano Vermelho";
+          ganhou = true;
+        } else if (result === defaultSettings.names[2]) {
+          backDiv.textContent = "Prêmio: 1 Refrigerante";
+          ganhou = true;
+        } else if (result === defaultSettings.names[3]) {
+          backDiv.textContent = "Prêmio: 1 Energy Shot";
+          ganhou = true;
+        } else if (result === defaultSettings.names[4]) {
+          backDiv.textContent = "Prêmio: 1 Picolé";
+          ganhou = true;
+        } else if (result === defaultSettings.names[5]) {
+          backDiv.textContent = "Prêmio: Caprichoso 1 Brinde Exclusivo";
+          ganhou = true;
+        } else if (result === defaultSettings.names[6]) {
+          backDiv.textContent = "Prêmio: Garantido 1 Brinde Exclusivo";
+          ganhou = true;
+        } else if (result === defaultSettings.names[7] || result === defaultSettings.names[8]) {
+          backDiv.textContent = "Prêmio: 1 Brinde Exclusivo";
+          ganhou = true;
+        }
+        
+        if (ganhou) {
+          defaultSettings.tentativa = 0;
+          document.getElementById("valor-tentativa").innerText = defaultSettings.tentativa + "/3";
+        }
+        
+        if (defaultSettings.tentativa >= 4) {
+          defaultSettings.tentativa = 0;
+          document.getElementById("valor-tentativa").innerText = defaultSettings.tentativa + "/3";
+        }
+        
+        for (let i = 0; i < this.options.colNum; i++) {
+          this.colArr[i].beforeRun(result);
+        }
+        this.rotateHandle();
+        this.run();
+      }
+      
+      if (this.options.autoPlay) {
+        setTimeout(() => {
+          this.beforeRun();
+        }, this.options.autoPlayTime * 1000);
+      }
+    };
+    
+    SlotMachine.prototype.afterRun = function () {
+      document.getElementById("background-music").pause();
+      completed = true;
+      const results = [];
+      let win = true;
+      
+      for (let i = 0; i < this.options.colNum; i++) {
+        results.push(this.colArr[i].getResult());
+        if (i > 0 && results[i] !== results[i - 1]) {
+          win = false;
+          break;
+        }
+      }
+      
+      this.showResult(win);
+      
+      if (win) {
+        document.getElementById("background-music-winner").play();
+        const containers = document.querySelectorAll(".container1");
+        containers.forEach(container => {
+          const card = container.querySelector(".card");
+          card.classList.remove("flipped1");
+          card.classList.add("flipped");
+        });
+      } else {
+        document.getElementById("background-music-faild").play();
+      }
+      
+      setTimeout(() => {
+        this.showResult(false);
+      }, this.options.autoPlayTime * 1000);
+    };
+    
+    SlotMachine.prototype.showResult = function (isWin) {
+      const winner = document.querySelector(".winner");
+      const gameover = document.querySelector(".gameover");
+      
+      if (isWin) {
+        if (winner) winner.className = "winner active";
+        if (gameover) gameover.className = "gameover";
+      } else {
+        if (gameover) gameover.className = "gameover active";
+        if (winner) winner.className = "winner";
+      }
+    };
+    
+    SlotMachine.prototype.rotateHandle = function () {
+      const handle = document.querySelector(".handle");
+      if (handle) {
+        handle.addClass("active");
+        setTimeout(() => {
+          handle.removeClass("active");
+        }, 1000);
+      }
+    };
+    
+    SlotMachine.prototype.run = function () {
+      let done = true;
+      for (let i = 0; i < this.options.colNum; i++) {
+        done &= this.colArr[i].run();
+      }
+      if (!done) {
+        raf(this.run);
+      } else {
+        this.afterRun();
+      }
+    };
+    
+    SlotMachine.prototype.init = function () {
+      completed = true;
+      const machine = document.querySelector(".machine");
+      const container = document.querySelector(".container");
+      machine.style.opacity = 0;
+      
+      for (const key in defaultSettings) {
+        this.options[key] = defaultSettings[key];
+      }
+      
+      // Responsividade
+      if (window.innerWidth >= 1440) {
+        this.options.width = "550";
+        this.options.height = "550";
+      } else if (window.innerWidth >= 1024) {
+        this.options.width = "900";
+        this.options.height = "600";
+      } else if (window.innerWidth >= 768) {
+        this.options.width = "600";
+        this.options.height = "600";
+      } else if (window.innerWidth >= 425) {
+        this.options.width = "450";
+        this.options.height = "450";
+      } else if (window.innerWidth >= 320) {
+        this.options.width = "300";
+        this.options.height = "350";
+      } else {
+        this.options.width = "200";
+        this.options.height = "200";
+      }
+      
+      let settingStyle = "";
+      settingStyle += getStyle(".machine", {
+        "margin-top": (window.innerHeight - this.options.height) / 2 + "px",
+        "margin-left": (window.innerWidth - this.options.width) / 2 + "px",
+      });
+      
+      settingStyle += getStyle(".container", {
+        height: this.options.height + "px",
+        width: this.options.width - this.options.handleWidth + "px",
+        "border-width": this.options.machineBorder + "px",
+        "border-color": this.options.machineColor + " " + getLighter(this.options.machineColor),
+      });
+      
+      const winnerSize = 1.2 * Math.max(this.options.height, this.options.width);
+      settingStyle += getStyle(".winner:before, .winner:after", {
+        height: winnerSize + "px",
+        width: winnerSize + "px",
+        top: (this.options.height - winnerSize) / 2 - 20 + "px",
+        left: (this.options.width - winnerSize) / 2 - this.options.handleWidth + "px",
+      });
+      
+      settingStyle += getStyle(".handle", {
+        "margin-top": this.options.height / 2 - this.options.handleHeight + "px",
+      });
+      
+      const styleTag = document.createElement("style");
+      styleTag.id = "setting";
+      styleTag.innerHTML = settingStyle;
+      document.head.appendChild(styleTag);
+      
+      // Remover colunas antigas
+      if (this.colArr && this.colArr.length > 0) {
+        for (let i = 0; i < this.colArr.length; i++) {
+          container.removeChild(this.colArr[i].getDOM());
+        }
+      }
+      
+      this.colArr = [];
+      for (let i = 0; i < this.options.colNum; i++) {
+        const col = new SlotColumn();
+        col.init(this.options.names.slice(0, this.options.rowNum), isShuffle);
+        this.colArr.push(col);
+        container.appendChild(col.getDOM());
+      }
+      
+      machine.style.opacity = "1";
+    };
+    
+    SlotMachine.prototype.addListener = function () {
+      const handle = document.querySelector(".handle");
+      if (handle) {
+        handle.addEventListener("click", () => {
+          this.beforeRun();
+        });
+      }
+      
+      window.addEventListener("resize", () => {
+        this.init();
+      });
+      
+      if ("ontouchstart" in window || navigator.msMaxTouchPoints) {
+        window.addEventListener("touchstart", () => {
+          this.beforeRun();
+        });
+      } else {
+        window.addEventListener("click", (e) => {
+          if (e.target !== document.querySelector(".btn.play")) {
+            this.beforeRun();
+          }
+        });
+      }
+      
+      const playBtn = document.querySelector(".btn.play");
+      if (playBtn) {
+        playBtn.addEventListener("click", () => {
+          document.getElementById("modalOverlay").style.display = "none";
+          this.beforeRun();
+        });
+      }
+      
+      const closeBtn = document.getElementById("closeModal");
+      if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+          document.getElementById("modalOverlay").style.display = "none";
+        });
+      }
+    };
+
+    // Inicialização
+    window.addEventListener("load", () => {
+      widget = new SlotMachine();
+      widget.addListener();
+      widget.init();
+      
+      // Configurar botões do modal
+      const playBtn = document.querySelector(".btn.play");
+      const closeBtn = document.getElementById("closeModal");
+      const modalOverlay = document.getElementById("modalOverlay");
+      
+      if (playBtn) {
+        playBtn.addEventListener("click", () => {
+          modalOverlay.style.display = "none";
+          widget.beforeRun();
+        });
+      }
+      
+      if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+          modalOverlay.style.display = "none";
+        });
+      }
+    });
+  </script>
+</body>
+</html>

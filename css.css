@@ -353,9 +353,9 @@ h1.main, p.demos {
 }
 
 .badge {
-  position: absolute;
+  position:absolute ;
   top: 210px;  /* ajusta a posição acima do caça-níquel */
-  left: 745px;
+  left: 500px !important;
   transform: translateX(-50%);
   background: #fff;
   padding: 5px 15px;
