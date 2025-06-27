@@ -58,7 +58,7 @@ const gradientColors = [
       height: "200",
       colNum: 3,
       rowNum: 9,
-      winRate: 60,//localStorage.getItem('porcetagem'),
+      winRate: 70,//localStorage.getItem('porcetagem'),
       autoPlay: false,
       autoSize: false,
       autoPlayTime: 100,
